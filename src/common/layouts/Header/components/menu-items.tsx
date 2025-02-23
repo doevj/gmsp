@@ -6,13 +6,13 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 
 const menuItems = [
-  { name: 'Home', href: '/', id: 'home' },
-  // { name: 'About', href: '/about', id: 'about' },
+  { name: 'Home', href: '/home', id: 'home' },
+  { name: 'About', href: '/about', id: 'about' },
 ];
 
 function getActiveMenuItem(pathname: string) {
-  const menuItem = menuItems.find(item => item.href.includes(pathname));
-  return menuItem ? menuItem.id : 'home';
+  const menuItem = menuItems.find(item => pathname.includes(item.href));
+  return menuItem ? menuItem.id : '';
 }
 
 export const MenuItems: FC = () => {

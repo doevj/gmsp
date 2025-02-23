@@ -12,5 +12,9 @@
   "Index": {
     "title": "Welcome to the index page",
     "message": "This is the index page"
+  },
+  "About": {
+    "title": "About Us",
+    "message": "Grama Spanish Language School is a language school that offers Spanish classes for all levels. We offer classes for beginners, intermediate, and advanced students. Our classes are designed to help you learn Spanish in a fun and interactive way. Our teachers are native Spanish speakers who are experienced in teaching Spanish to students of all levels. We offer both group and private classes, so you can choose the option that works best for you. Whether you are looking to learn Spanish for travel, work, or just for fun, we have a class that is right for you."
   }
 }
