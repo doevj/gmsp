@@ -1,0 +1,16 @@
+{
+  "Header": {
+    "Home": "Home",
+    "About": "About",
+    "Get_Clases": "Get Clases"
+  },
+  "Home": {
+    "title": "Grama Spanish",
+    "message": "This is the home page",
+    "description": "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+  },
+  "Index": {
+    "title": "Welcome to the index page",
+    "message": "This is the index page"
+  }
+}
