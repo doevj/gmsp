@@ -18,7 +18,7 @@ function getActiveMenuItem(pathname: string) {
 export const MenuItems: FC = () => {
   const pathname = usePathname()
   const locale = useLocale();
-  const [activeMenuItem, setActiveMenuItem] = useState(getActiveMenuItem(pathname));
+  const [activeMenuItem, setActiveMenuItem] = useState(getActiveMenuItem(String(pathname)));
 
   useEffect(() => {
     if (pathname) setActiveMenuItem(getActiveMenuItem(pathname))
