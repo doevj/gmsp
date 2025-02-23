@@ -1,6 +1,6 @@
 'use client';
 import { FC, useEffect, useState } from "react";
-import { Button, Loading } from "@/common/components";
+import { Button } from "@/common/components";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useLocale } from "next-intl";

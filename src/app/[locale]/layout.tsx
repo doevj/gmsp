@@ -4,14 +4,12 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Header, Footer, Social } from "@/common/layouts";
 import '../globals.css';
+import { PropsWithChildren } from 'react';
 
 export default async function LocaleLayout({
   children,
   params
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
+}: PropsWithChildren<{ params: Promise<{ locale: string }> }>) {
   const { locale } = await params;
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as 'en' | 'es' | 'ru')) {
