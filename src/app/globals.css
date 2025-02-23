@@ -15,10 +15,25 @@
 }
 
 * {
-  overflow: scroll; /* or 'auto' */
-  scrollbar-width: none; /* Firefox */
+  overflow: scroll;
+  scrollbar-width: none;
 }
 
 *::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Edge */
+  display: none;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans Display", sans-serif;
+  font-optical-sizing: auto;
 }

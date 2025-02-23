@@ -1,11 +1,10 @@
 import { NextIntlClientProvider } from 'next-intl';
+import { PropsWithChildren } from 'react';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Header, Footer, Social } from "@/common/layouts";
 import '../globals.css';
-import { PropsWithChildren } from 'react';
-
 export default async function LocaleLayout({
   children,
   params
@@ -22,10 +21,12 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body>
+      <body >
         <NextIntlClientProvider messages={messages}>
           <Header />
-          {children}
+          <div className='min-h-screen'>
+            {children}
+          </div>
           <Social />
           <Footer />
         </NextIntlClientProvider>

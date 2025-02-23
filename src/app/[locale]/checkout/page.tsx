@@ -79,7 +79,6 @@ export default function Checkout() {
     .join("\n")}`;
 
   const onSubmit = async () => {
-    console.log('submit')
     const response = await sendMail({
       email: '',
       subject: 'New Contact Us Form',
@@ -91,10 +90,10 @@ export default function Checkout() {
   const total = classItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
-    <div className="bg-amber-100 bg-opacity-50 min-h-[80vh] p-10 min-w-[300px]">
+    <div className="bg-amber-100 bg-opacity-50 min-h-[80vh] p-10 min-w-[300px] flex flex-col items-center align-center justify-center">
       <h1 className="w-full font-bold text-center align-center text-4xl mb-9"> Get Classes </h1>
 
-      <div className="mb-10 flex flex-col gap-2">
+      <div className="mb-10 flex flex-col gap-2 w-2/5">
         <label htmlFor="name">Your full name</label>
         <input
           name="name"
@@ -106,7 +105,7 @@ export default function Checkout() {
         />
       </div>
 
-      <div className="flex flex-col gap-5 mb-5">
+      <div className="flex flex-col gap-5 mb-5 w-2/5">
         {classItems.map((item) => (
           <Class
             name={item.name}
