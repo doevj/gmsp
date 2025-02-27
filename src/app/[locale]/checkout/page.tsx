@@ -1,50 +1,10 @@
 "use client";
 
-import { useReducer, useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { useLocale } from "next-intl";
-import { Class } from "./components";
 import { sendMail } from "@/lib/send-mail";
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
-
-const CheckoutButton: React.FC<{
-  items: {
-    name: string;
-    price: number;
-    quantity: number;
-  }[];
-  onClick: () => void;
-  disabled: boolean;
-}> = ({ items, onClick, disabled }) => {
-  const locale = useLocale();
-  const [loading, setLoading] = useState(false);
-
-  const handleCheckout = async () => {
-    onClick();
-    setLoading(true);
-    const response = await fetch("/api/checkout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items, locale }),
-    });
-
-    const { sessionId } = await response.json();
-    const stripe = await stripePromise;
-    await stripe?.redirectToCheckout({ sessionId });
-    setLoading(false);
-  };
-
-  return (
-    <button
-      onClick={handleCheckout}
-      disabled={disabled || loading}
-      className="text-white px-4 py-2 bg-green-500 rounded border hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      {loading ? "Processing..." : "Checkout"}
-    </button>
-  );
-};
+import { useReducer, useState } from "react";
+import { CheckoutButton, Class } from "./components";
+import { useTranslations } from "next-intl";
+import { Selector } from "@/common/components";
 
 type ClassItem = {
   name: string;
@@ -71,12 +31,34 @@ const reducer = (state: ClassItem[], action: Action): ClassItem[] => {
   );
 };
 
+const options = [
+  { value: "Spanish for Beginners", label: "Spanish for Beginners" },
+  { value: "Intermediate Spanish", label: "Intermediate Spanish" },
+  { value: "Advanced Spanish", label: "Advanced Spanish" },
+  { value: "Spanish for kids", label: "Spanish for kids" },
+  { value: "Business Spanish", label: "Business Spanish" },
+  { value: "Spanish for travel", label: "Spanish for travel" },
+  { value: "Grammar lessons", label: "Grammar lessons" },
+  { value: "Writing practice", label: "Writing practice" },
+  { value: "Spanish Conversation", label: "Spanish Conversation" },
+  { value: "Spanish Pronunciation", label: "Spanish Pronunciation" },
+];
+
 export default function Checkout() {
+  const t = useTranslations('Checkout');
   const [classItems, dispatch] = useReducer(reducer, items);
   const [name, setName] = useState('');
-  const mailText = `Name: ${name}\n\n${classItems
+  const [email, setEmail] = useState('');
+  const [chosenVariant, setChosenVariant] = useState('');
+
+  const mailText = `attempt, Name: ${name}\n\n${classItems
     .map((item) => `${item.name}: ${item.quantity}`)
-    .join("\n")}`;
+    .join("\n")}
+    \n\nChosen class type: ${chosenVariant}
+    \n\nTotal: ${classItems.reduce((acc, item) => acc + item.price * item.quantity, 0)} €
+    \n\nEmail
+    \n${email}
+    `;
 
   const onSubmit = async () => {
     const response = await sendMail({
@@ -91,21 +73,45 @@ export default function Checkout() {
 
   return (
     <div className="bg-amber-100 bg-opacity-50 min-h-[80vh] p-10 min-w-[300px] flex flex-col items-center align-center justify-center">
-      <h1 className="w-full font-bold text-center align-center text-4xl mb-9"> Get Classes </h1>
+      <h1 className="w-full font-bold text-center align-center text-4xl mb-9"> {t('getClasses')} </h1>
 
-      <div className="mb-10 flex flex-col gap-2 w-2/5">
-        <label htmlFor="name">Your full name</label>
+      <div className="mb-10 flex flex-col gap-2 w-2/5 min-w-[310px]">
+        <label htmlFor="name"> {t('fullName')} </label>
         <input
           name="name"
           type="text"
           placeholder="John Doe"
-          className="border border-gray-200 p-2 rounded-md min-w-[300px]"
+          className="border border-gray-200 p-2 rounded-md min-w-[310px]"
           value={name}
+          required
           onChange={(e) => setName(e.target.value)}
         />
+
+        <div className="mb-3" />
+
+        <label htmlFor="name"> {t('email')} </label>
+        <input
+          name="email"
+          type="email"
+          placeholder="john@gmail.com"
+          className="border border-gray-200 p-2 rounded-md min-w-[310px]"
+          value={email}
+          required
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <div className="mb-3" />
+
+        <Selector
+          value={chosenVariant}
+          onChange={(v) => setChosenVariant(v)}
+          options={options}
+          label={t('chooseType')}
+        />
+
       </div>
 
-      <div className="flex flex-col gap-5 mb-5 w-2/5">
+      <div className="flex flex-col gap-5 mb-5 w-2/5 min-w-[310px]">
         {classItems.map((item) => (
           <Class
             name={item.name}
@@ -119,7 +125,7 @@ export default function Checkout() {
       </div>
 
       <div className="ml-1 flex justify-between w-1/5 min-w-[300px] bg-white p-3 px-5 rounded-md">
-        <h2 className="bold">TOTAL</h2>
+        <h2 className="bold">{t('Total')}</h2>
         <h2>
           {total} €
         </h2>
@@ -128,9 +134,10 @@ export default function Checkout() {
       <div className="m-5" />
 
       <div>
-        <p className="text-gray-500 mb-2">You will be redirected to the payment page</p>
+        <p className="text-gray-500 mb-2"> {t('redirect')} </p>
       </div>
-      <CheckoutButton items={classItems} onClick={onSubmit} disabled={total < 1 || name?.length < 4} />
+
+      <CheckoutButton items={classItems} onClick={onSubmit} disabled={total < 1 || name?.length < 4} clientName={name} />
     </div>
   )
 }

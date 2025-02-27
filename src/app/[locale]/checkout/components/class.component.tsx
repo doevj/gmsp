@@ -12,7 +12,7 @@ export const Class: FC<Props> = ({
   name, price, quantity, increment, decrement
 }) => {
   return (
-    <div className="bg-white  p-4 rounded-md mb-3 min-w-[300px]">
+    <div className="bg-white p-4 rounded-md mb-3 min-w-[320px]">
       <h1 className="text-xl font-bold">{name}</h1>
 
       <div className="flex gap-5 items-center mt-4">

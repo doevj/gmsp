@@ -37,3 +37,7 @@ body {
   font-family: "Noto Sans Display", sans-serif;
   font-optical-sizing: auto;
 }
+
+select {
+  outline: none;
+}

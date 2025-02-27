@@ -25,8 +25,7 @@ export const MenuItems: FC = () => {
   }, [pathname]);
 
   return (
-    <div className="flex items-center space-x-4 text-gray-800">
-
+    <div className={"flex items-center space-x-4 text-gray-800"}>
       {menuItems.map((item, index) => (
         <Link key={index} href={`/${locale}${item.href}`} >
           <Button variant={activeMenuItem === item.id ? 'active' : 'normal'} className="bg-opacity-70 hover:bg-opacity-100">
@@ -35,7 +34,7 @@ export const MenuItems: FC = () => {
         </Link>
       ))}
       <Link href={`/${locale}/checkout`} >
-        <Button variant="trust" className="flex bg-opacity-70 hover:bg-opacity-100">
+        <Button variant="trust" className="flex bg-opacity-70 hover:bg-opacity-100 text-nowrap">
           Get classes
         </Button>
       </Link>
