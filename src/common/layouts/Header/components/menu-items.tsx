@@ -6,8 +6,9 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 
 const menuItems = [
-  { name: 'Home', href: '/home', id: 'home' },
+  { name: 'Courses', href: '/courses', id: 'courses' },
   { name: 'About', href: '/about', id: 'about' },
+  { name: 'Contact', href: '/contact', id: 'contact' },
 ];
 
 function getActiveMenuItem(pathname: string) {
@@ -25,16 +26,16 @@ export const MenuItems: FC = () => {
   }, [pathname]);
 
   return (
-    <div className={"flex items-center space-x-4 text-gray-800"}>
+    <div className={"flex items-center space-x-4"}>
       {menuItems.map((item, index) => (
         <Link key={index} href={`/${locale}${item.href}`} >
-          <Button variant={activeMenuItem === item.id ? 'active' : 'normal'} className="bg-opacity-70 hover:bg-opacity-100">
+          <Button variant={activeMenuItem === item.id ? 'active' : 'normal'} className="bg-opacity-70 hover:bg-opacity-100 text-white">
             {item.name}
           </Button>
         </Link>
       ))}
       <Link href={`/${locale}/checkout`} >
-        <Button variant="trust" className="flex bg-opacity-70 hover:bg-opacity-100 text-nowrap">
+        <Button variant="trust" className="flex bg-opacity-70 hover:bg-opacity-100 text-gray-600 text-nowrap">
           Get classes
         </Button>
       </Link>

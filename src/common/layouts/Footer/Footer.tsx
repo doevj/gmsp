@@ -1,33 +1,34 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
+import Image from 'next/image';
+import { Button } from '@/common/components';
 
-const mockItems = [
-  [
-    { text: 'Home', url: '/home' },
-    // { text: 'About', url: '/about' },
-    { text: 'Classes', url: '/checkout' },
-  ],
-  // [
-  //   { text: 'Item 4', url: '/item4' },
-  // ]
+const socials = [
+  { src: "/media/svg/envelope.svg", label: "Email", href: "#" },
+  { src: "/media/svg/instagram.svg", label: "Instagram", href: "#" },
+  { src: "/media/svg/telegram.svg", label: "Telegram", href: "#" },
+  { src: "/media/svg/whatsapp.svg", label: "WhatsApp", href: "#" },
 ]
 
 export const Footer: FC = () => {
   const locale = useLocale();
+
   return (
-    <footer className="bg-gray-800 text-gray-300 p-6 flex align-start justify-start items-start min-h-[210px]">
-      <div className="container grid grid-cols-1 md:grid-cols-2 gap-5">
-        {mockItems.map((column, ix) => (
-          <div key={ix} className='flex flex-col gap-3'>
-            {column.map((item, index) => (
-              <p key={index}>
-                <Link href={`/${locale}${item.url}`}>{item.text}</Link>
-              </p>
-            ))}
-          </div>
+    <footer className="flex bg-teal-500/80 items-end w-full mx-auto p-5 min-h-[200px] justify-between flex-col md:flex-row gap-5">
+      <div className='flex gap-5'>
+        {socials.map(({ src, label, href }) => (
+          <Link key={label} href={href} aria-label={label}><Image className='filter invert' src={src} alt={label} height={30} width={30} /></Link>
         ))}
+      </div>
+
+      <div>
+        <Image src="/media/svg/logo-white.svg" alt="Logo" height={130} width={130} className='ml-auto' />
+        <div >
+          <Button className='text-white'>Join us</Button>
+          <input className='p-4 border-none min-w-[250px] text-sm w-[200px] rounded-lg' type="email" placeholder="Enter your email to stay updated" aria-label="Email input" />
+        </div>
       </div>
     </footer>
   );
-}
+} 

@@ -17,7 +17,7 @@ export const LessonsList: FC<LessonsListProps> = ({ title, lessons }) => {
   const locale = useLocale();
 
   return (
-    <div className="bg-gray-50 py-10">
+    <div className="relative py-10 z-10">
       <h2 className="text-center text-3xl font-bold text-yellow-600 mb-8">
         {title}
       </h2>

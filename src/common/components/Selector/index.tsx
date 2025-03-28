@@ -1,6 +1,7 @@
+'use client';
 import { FC, useState } from "react";
 
-type OptionsT<T> = {
+type OptionsT<T = string> = {
   label: string;
   value: T;
 }

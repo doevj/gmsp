@@ -1,33 +1,33 @@
 import { useTranslations } from 'next-intl';
-import { LessonsList } from './(components)';
-import { lessons } from './mocks';
 import Image from 'next/image';
-import img from '@/common/assets/grl-book.jpg'
+import { LessonsList, Video } from './(components)';
+import { lessons } from './mocks';
 
-export default function Home() {
+
+function MainView() {
   const t = useTranslations('Home');
 
   return (
-    <div className="bg-amber-100 w-full p-10 relative">
-      <div className="flex align-center justify-center flex-wrap w-full z-index-[3] relative mb-9">
-        <div className="text-gray-900 my-10 flex items-center justify-center">
-          <div className="max-w-4xl px-8">
-            <h1 className="text-5xl font-light italic leading-snug">
-              {t('title')}
-            </h1>
+    <div className="relative w-4/6 min-w-[320px] mx-auto flex flex-col items-center justify-center text-white text-center p-10 bg-teal-700 bg-opacity-30 rounded-3xl">
+      <Image src="/media/svg/logo-white.svg" height={500} width={500} alt='logo' />
+      <p className="text-4xl mt-4">The best way to learn</p>
+      <button className="mt-6 px-6 py-3 border border-white rounded-lg text-lg font-medium hover:bg-white hover:text-black transition-all">
+        Start Learning
+      </button>
+    </div>
+  )
+}
 
-            <p className="mt-6 text-2xl font-semibold text-gray-800">
-              {t('message')}
-            </p>
+export default function Home() {
+  return (
+    <div className="w-full p-10 relative">
+      <Video />
 
-            <p className="mt-4 text-lg font-normal">
-              {t('description')}
-            </p>
-          </div>
-        </div>
+      <div className="mb-20" />
 
-        <Image src={img} width={300} height={200} alt='main-img' className='rounded-2xl' objectFit={'contain'} />
-      </div>
+      <MainView />
+
+      <div className="mb-20" />
 
       <LessonsList lessons={lessons} title="Nuestro clases" />
     </div>
