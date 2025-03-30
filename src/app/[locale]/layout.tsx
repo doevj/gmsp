@@ -24,7 +24,7 @@ export default async function LocaleLayout({
       <body >
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <div className='min-h-[70vh]'>
+          <div className='min-h-[100vh]'>
             {children}
           </div>
           <Social />

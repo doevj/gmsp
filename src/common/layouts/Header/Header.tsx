@@ -1,11 +1,11 @@
 "use client";
-import { Logo } from "@/common/assets/Logo";
 import { useLocale } from "next-intl";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { FC } from "react";
+import Link from "next/link";
+import { Logo } from "@/common/assets/Logo";
+import { ChangeLangDropdown } from "@/common/components";
+import { usePathname } from "next/navigation";
 import { MenuItems } from "./components";
-import { ChangeLangDropdown } from "./components/change-lang";
 
 export const Header: FC = () => {
   const locale = useLocale();

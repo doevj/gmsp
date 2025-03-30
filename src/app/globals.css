@@ -41,3 +41,7 @@ body {
 select {
   outline: none;
 }
+
+.fontf-spectral {
+  font-family: "Spectral", serif;
+}

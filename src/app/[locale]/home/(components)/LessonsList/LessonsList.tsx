@@ -1,11 +1,12 @@
-import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { FC } from 'react'
+import Image from 'next/image';
 
 type Lesson = {
   title: string;
   description: string;
-  color: string; // bg color
+  imageUrl?: string;
+  buttonText?: string;
 }
 
 type LessonsListProps = {
@@ -13,32 +14,37 @@ type LessonsListProps = {
   lessons: Lesson[];
 }
 
-export const LessonsList: FC<LessonsListProps> = ({ title, lessons }) => {
-  const locale = useLocale();
+const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }) => {
+  return (
+    <div className="bg-green-50 rounded-2xl shadow-md p-6 px-12 text-center w-120 border border-gray-200 mx-auto flex flex-col items-center gap-3 cursor-pointer hover:scale-[1.02] transition duration-300">
+      <h2 className="text-lg mb-4 uppercase font-spectral font-extralight fontf-spectral">{title}</h2>
+      {imageUrl && (
+        <Image
+          src={imageUrl}
+          alt="Illustration"
+          width={300}
+          height={300}
+          className="max-w-[300px] max-h-[300px] min-w-[300px] min-h-[300px] object-cover mx-auto"
+        />
+      )}
+      <p className="text-gray-700 max-w-[290px]">{description}</p>
+      <Link href={'#'} className="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 mt-auto" >
+        {buttonText}
+      </Link>
+    </div>
+  )
+}
 
+export const LessonsList: FC<LessonsListProps> = ({ title, lessons }) => {
   return (
     <div className="relative py-10 z-10">
-      <h2 className="text-center text-3xl font-bold text-yellow-600 mb-8">
+      <h1 className="text-center text-[2rem] md:text-[5rem] font-bold text-teal-600 mb-8 font-serif">
         {title}
-      </h2>
+      </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto px-4 py-5">
         {lessons.map((lesson, index) => (
-          <div
-            key={index}
-            className={`rounded-lg shadow-lg overflow-hidden ${lesson.color} `}
-          >
-            <div className="p-6 text-center flex flex-col gap-3 h-full">
-              <h3 className="text-xl font-bold mb-4">{lesson.title}</h3>
-              <p className="text-sm text-gray-700 mb-4">{lesson.description}</p>
-
-              <Link className='mt-auto' href={`/${locale}/checkout`} >
-                <button className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
-                  Me interesa
-                </button>
-              </Link>
-            </div>
-          </div>
+          <LessonListItem key={index} {...lesson} />
         ))}
       </div>
     </div>
