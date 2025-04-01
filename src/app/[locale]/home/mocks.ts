@@ -1,31 +1,27 @@
 export const lessons = [
   {
-    title: "Conversation classes",
-    description: "Mejora tu fluidez y tu vocabulario hablando con un profesor nativo.",
-    imageUrl: "/media/img/img1.png",
-    buttonText: "¡Hablemos!",
-  },
-  {
     title: "Individual classes",
-    description:
-      "Aprende la gramática de una forma sencilla y práctica con ejercicios y explicaciones.",
-    color: "bg-green-300",
-    imageUrl: "/media/img/img2.png",
-    buttonText: "¡Hablemos!",
+    description: "Learn Spanish faster with personalized online classes",
+    imageUrl: "/media/svg/individual-classes.svg",
+    buttonText: "More info",
+  },
+  {
+    title: "Pair classes",
+    description: "Improve your fluency in Spanish with someone else",
+    imageUrl: "/media/svg/pair-classes.svg",
+    buttonText: "More info",
   },
   {
     title: "Group classes",
     description: "Ejercicios de gramática para todos los niveles.",
-    color: "bg-orange-200",
-    imageUrl: "/media/img/img3.png",
-    buttonText: "¡Hablemos!",
+    imageUrl: "/media/svg/group-classes.svg",
+    buttonText: "More info",
   },
   {
-    title: "Group classes",
-    description: "Ejercicios de gramática para todos los niveles.",
-    color: "bg-orange-200",
-    imageUrl: "/media/img/img4.png",
-    buttonText: "¡Hablemos!",
+    title: "Trial class",
+    description: "Great opportunity to experience how we work and make sure our approach is the right fit for you",
+    imageUrl: "/media/svg/trial-class.svg",
+    buttonText: "More info",
   },
 ];
  

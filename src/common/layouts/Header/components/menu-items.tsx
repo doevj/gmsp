@@ -8,7 +8,7 @@ import { useLocale } from "next-intl";
 const menuItems = [
   { name: 'Courses', href: '/courses', id: 'courses' },
   { name: 'About', href: '/about', id: 'about' },
-  { name: 'Contact', href: '/contact', id: 'contact' },
+  { name: 'Contact', href: '/contacts', id: 'contact' },
 ];
 
 function getActiveMenuItem(pathname: string) {

@@ -1,12 +1,12 @@
-import { useTranslations } from 'next-intl';
+// import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { LessonsList, Video, Testimonials } from './(components)';
+import { Video, Testimonials } from './(components)';
 import { lessons } from './mocks';
-import { Button } from '@/common/components';
+import { Button, LessonsList } from '@/common/components';
 
 
 function MainView() {
-  const t = useTranslations('Home');
+  // const t = useTranslations('Home');
 
   return (
     <div className="relative w-4/6 min-w-[320px] mx-auto flex flex-col items-center justify-center text-white text-center p-10 bg-teal-600 bg-opacity-40 rounded-3xl">
@@ -25,6 +25,7 @@ export default function Home() {
       <div className="w-full p-10 relative ">
         <Video />
 
+        <div className="mb-20" />
         <div className="mb-20" />
 
         <MainView />

@@ -16,7 +16,7 @@ type LessonsListProps = {
 
 const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }) => {
   return (
-    <div className="bg-green-50 rounded-2xl shadow-md p-6 px-12 text-center w-120 border border-gray-200 mx-auto flex flex-col items-center gap-3 cursor-pointer hover:scale-[1.02] transition duration-300">
+    <div className="bg-green-50 rounded-2xl shadow-md p-6 px-12 text-center w-120 border-teal-500 border-2 mx-auto flex flex-col items-center gap-3 cursor-pointer hover:scale-[1.02] transition duration-300">
       <h2 className="text-lg mb-4 uppercase font-spectral font-extralight fontf-spectral">{title}</h2>
       {imageUrl && (
         <Image
@@ -28,7 +28,7 @@ const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }
         />
       )}
       <p className="text-gray-700 max-w-[290px]">{description}</p>
-      <Link href={'#'} className="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 mt-auto" >
+      <Link href={'#'} className="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 mt-auto scale-110" >
         {buttonText}
       </Link>
     </div>
@@ -38,11 +38,11 @@ const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }
 export const LessonsList: FC<LessonsListProps> = ({ title, lessons }) => {
   return (
     <div className="relative py-10 z-10">
-      <h1 className="text-center text-[2rem] md:text-[5rem] font-bold text-teal-600 mb-8 font-serif">
+      <h1 className="text-center text-[2rem] md:text-[3.5rem] font-bold text-teal-600 mb-8 font-serif">
         {title}
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto px-4 py-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-4xl mx-auto px-4 py-5">
         {lessons.map((lesson, index) => (
           <LessonListItem key={index} {...lesson} />
         ))}

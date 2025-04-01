@@ -7,7 +7,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button: FC<ButtonProps> = ({ variant = 'normal', className, children, ...rest }) => {
   const variantClasses = {
-    active: 'bg-yellow-300',
+    active: 'bg-lime-500',
     trust: 'bg-green-300',
     danger: 'bg-red-300',
     normal: '',
@@ -18,7 +18,7 @@ export const Button: FC<ButtonProps> = ({ variant = 'normal', className, childre
       className={
         cn(
           variantClasses[variant],
-          'font-semibold py-1 px-2 sm:py-2 sm:px-4 rounded scale-[75%] sm:scale-[100%]',
+          'font-semibold py-1 px-2 sm:py-2 sm:px-4 rounded scale-[75%] sm:scale-[100%] hover:text-zinc-100',
           className
         )
       }

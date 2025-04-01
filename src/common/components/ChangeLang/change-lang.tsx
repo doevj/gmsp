@@ -58,14 +58,21 @@ export const ChangeLangDropdown: FC = () => {
               title={title}
               aria-label={title}
               key={lang}
+              className="relative"
             >
-              <Image width={25} height={17} src={image.src} alt={`lang-${lang}`} />
+              <span className="absolute -top-1 left-1 ">
+                {lang}
+              </span>
+              <Image width={25} height={17} src={image.src} alt={`lang-${lang}`} className="opacity-35 hover:opacity-95" />
             </a>
           ))
         }
       </div>
-      <button onClick={() => setIsOpen(v => !v)}>
-        <Image width={25} height={17} src={languageItems[locale].image.src || ''} alt={`lang-${locale}`} />
+      <button onClick={() => setIsOpen(v => !v)} className="relative">
+        <Image width={25} height={17} src={languageItems[locale].image.src || ''} alt={`lang-${locale}`} className="hover:opacity-90" />
+        <span className="z-10 text-white">
+          {locale}
+        </span>
       </button>
     </div>
   )

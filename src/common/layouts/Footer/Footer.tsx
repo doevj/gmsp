@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+// import { useLocale } from 'next-intl';
 import Image from 'next/image';
-import { Button, ChangeLangDropdown } from '@/common/components';
+import { Button } from '@/common/components';
 
 const socials = [
   { src: "/media/svg/envelope.svg", label: "Email", href: "#" },
@@ -12,7 +12,7 @@ const socials = [
 ]
 
 export const Footer: FC = () => {
-  const locale = useLocale();
+  // const locale = useLocale();
 
   return (
     <footer className="flex bg-teal-500/90 items-end w-full mx-auto p-5 min-h-[200px] justify-between flex-col md:flex-row gap-5">
@@ -22,15 +22,12 @@ export const Footer: FC = () => {
         ))}
       </div>
 
-
       <div>
         <Image src="/media/svg/logo-white.svg" alt="Logo" height={130} width={130} className='ml-auto' />
         <div className='flex flex-col items-end'>
           <Button className='text-white'>Join us</Button>
           <input className='p-4 border-none min-w-[250px] text-sm w-[200px] rounded-lg' type="email" placeholder="Enter your email to stay updated" aria-label="Email input" />
         </div>
-        
-
       </div>
     </footer>
   );
