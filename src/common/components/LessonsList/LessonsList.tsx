@@ -16,8 +16,8 @@ type LessonsListProps = {
 
 const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }) => {
   return (
-    <div className="bg-green-50 rounded-2xl shadow-md p-6 px-12 text-center w-120 border-teal-500 border-2 mx-auto flex flex-col items-center gap-3 cursor-pointer hover:scale-[1.02] transition duration-300">
-      <h2 className="text-lg mb-4 uppercase font-spectral font-extralight fontf-spectral">{title}</h2>
+    <div className="bg-green-50 rounded-2xl shadow-md p-12 text-center w-120 border-teal-500 border-2 mx-auto flex flex-col items-center gap-3 cursor-pointer hover:scale-[1.02] transition duration-300">
+      <h2 className="text-xl mb-4 uppercase font-spectral font-semibold text-teal-600">{title}</h2>
       {imageUrl && (
         <Image
           src={imageUrl}

@@ -7,7 +7,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button: FC<ButtonProps> = ({ variant = 'normal', className, children, ...rest }) => {
   const variantClasses = {
-    active: 'bg-lime-500',
+    active: 'bg-teal-700',
     trust: 'bg-green-300',
     danger: 'bg-red-300',
     normal: '',

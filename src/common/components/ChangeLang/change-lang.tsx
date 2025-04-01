@@ -1,11 +1,13 @@
 'use client'
 import { Lang } from "@/consts";
-import Image from "next/image";
+// import Image from "next/image";
 import { FC, useEffect, useRef, useState } from "react";
 import en from "./assets/uk.svg";
 import ru from "./assets/ru.svg";
 import es from "./assets/es.svg";
 import { useLocale } from "next-intl";
+import { usePathname } from "next/navigation";
+import { removeLangPrefix } from "@/utils";
 
 export const getLanguageItems = () => {
   return {
@@ -32,6 +34,8 @@ export const getLanguageItems = () => {
 
 export const ChangeLangDropdown: FC = () => {
   const locale = useLocale();
+  const path = usePathname();
+
   const languageItems: Record<string, { image: { src: string }, title: string, short: string, lang: string }> = getLanguageItems();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -48,28 +52,27 @@ export const ChangeLangDropdown: FC = () => {
   }, [])
 
   return (
-    <div ref={ref} className="flex gap-2 pt-5 ml-auto mb-auto relative z-70 overflow-visible">
+    <div ref={ref} className="flex gap-2 p-1 px-2 mt-3 ml-auto mb-auto relative z-70 overflow-visible border-2 border-teal-500 rounded-lg">
       <div className={` gap-2 ${isOpen ? 'flex' : 'hidden'}`}>
         {
-          Object.values(languageItems).map(({ image, title, lang }) => lang !== locale && (
+          Object.values(languageItems).map(({ title, lang }) => lang !== locale && (
             <a
-              // href={getRelativeLocaleUrl(lang)}
-              href="#"
+              href={path ? `/${lang}${removeLangPrefix(path)}` : '#'}
               title={title}
               aria-label={title}
               key={lang}
               className="relative"
             >
-              <span className="absolute -top-1 left-1 ">
+              <span className=" opacity-35 hover:opacity-95">
                 {lang}
               </span>
-              <Image width={25} height={17} src={image.src} alt={`lang-${lang}`} className="opacity-35 hover:opacity-95" />
+              {/* <Image width={25} height={17} src={image.src} alt={`lang-${lang}`} className="opacity-35 hover:opacity-95" /> */}
             </a>
           ))
         }
       </div>
       <button onClick={() => setIsOpen(v => !v)} className="relative">
-        <Image width={25} height={17} src={languageItems[locale].image.src || ''} alt={`lang-${locale}`} className="hover:opacity-90" />
+        {/* <Image width={25} height={17} src={languageItems[locale].image.src || ''} alt={`lang-${locale}`} className="hover:opacity-90" /> */}
         <span className="z-10 text-white">
           {locale}
         </span>
@@ -77,3 +80,4 @@ export const ChangeLangDropdown: FC = () => {
     </div>
   )
 }
+
