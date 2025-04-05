@@ -1,36 +1,98 @@
-"use client";
+'use client';
+import { FC, useState, ReactNode, useEffect, useRef } from 'react';
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { ReactNode } from "react";
+type CarouselProps = {
+  children: ReactNode[];
+  width?: string; // "100%", "600px", etc.
+};
 
-type Props = {
-  items: ReactNode[];
-}
+export const Slider: FC<CarouselProps> = ({ children, width = '100%' }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const isMoving = useRef(false);
+  const prevSlide = () => {
+    if (isMoving.current) return;
+    isMoving.current = true;
+    setCurrentIndex((prev) => (prev === 0 ? children.length - 1 : prev - 1));
+    setTimeout(() => {
+      isMoving.current = false;
+    }, 900);
+  };
 
-export const Slider: React.FC<Props> = ({ items }) => {
+  const nextSlide = () => {
+    if (isMoving.current) return;
+    isMoving.current = true;
+    setCurrentIndex((prev) => (prev === children.length - 1 ? 0 : prev + 1));
+    setTimeout(() => {
+      isMoving.current = false;
+    }, 900);
+  };
+
+  useEffect(() => {
+    const timeout = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(timeout);
+
+  }, [children.length]);
+
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  if (!isMounted) return null;
+
   return (
-    <div className="w-full max-w-3xl mx-auto">
-      <Swiper
-        modules={[Pagination, Autoplay]}
-        spaceBetween={50}
-        slidesPerView={1}
-        pagination={{ clickable: true }}
-        // autoplay={{ delay: 3000 }}
-        loop
-        className="rounded-2xl shadow-lg h-[110px]"
-      >
-        <div className="mt-10 mb-20">
-          {items.map((Item, ix) => (
-            <SwiperSlide key={ix}>
-              {Item}
-            </SwiperSlide>
+    <div className="relative">
+      <div style={{ width, }}>
+        <div
+          style={{
+            display: 'flex',
+            transition: 'transform 0.7s ease-in-out',
+            transform: `translateX(-${currentIndex * 100}%)`,
+            overflow: 'visible',
+          }}
+        >
+          {children.map((child, index) => (
+            <div key={index} style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              {child}
+            </div>
           ))}
         </div>
-      </Swiper>
+      </div>
+      <button
+        onClick={prevSlide}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '10px',
+          transform: 'translateY(-50%)',
+          background: 'rgba(0,0,0,0.2)',
+          color: 'black',
+          border: 'none',
+          padding: '8px',
+          cursor: 'pointer',
+          opacity: 0.3,
+        }}
+      >
+        {'‹'}
+      </button>
+      <button
+        onClick={nextSlide}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          right: '10px',
+          transform: 'translateY(-50%)',
+          background: 'rgba(0,0,0,0.2)',
+          color: 'black',
+          border: 'none',
+          padding: '8px',
+          cursor: 'pointer',
+          opacity: 0.3,
+        }}
+      >
+        {'›'}
+      </button>
     </div>
   );
 };

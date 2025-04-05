@@ -4,8 +4,7 @@ import { FC } from 'react';
 export default function Contacts() {
   return (
     <div className="relative w-full h-screen bg-teal-600/90 pt-20 flex flex-col gap-5  items-center">
-      <div className="mb-10" />
-      <h1 className='text-5xl w-full text-center text-white fontf-spectral scale-125 mb-7'> Contact us </h1>
+      <h1 className='text-5xl w-full text-center text-white fontf-spectral scale-100 mb-7'> Contact us </h1>
       <ContactForm />
       <Socials />
     </div>

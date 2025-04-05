@@ -1,15 +1,13 @@
 'use client';
 import { Lang } from '@/consts';
-// import Image from "next/image";
-import { FC, useEffect, useRef, useState } from 'react';
-import en from './assets/uk.svg';
-import ru from './assets/ru.svg';
-import es from './assets/es.svg';
-import { useLocale } from 'next-intl';
-import { usePathname } from 'next/navigation';
 import { removeLangPrefix } from '@/utils';
+import { useLocale } from 'next-intl';
 import Image from 'next/image';
-// import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { FC, useEffect, useRef, useState } from 'react';
+import es from './assets/es.svg';
+import ru from './assets/ru.svg';
+import en from './assets/uk.svg';
 
 export const getLanguageItems = () => {
   return {
@@ -54,12 +52,12 @@ export const ChangeLangDropdown: FC = () => {
   }, []);
 
   return (
-    <div ref={ref} className="scale-75 md:scale-90 flex flex-col gap-2 p-2 px-3 relative z-70 overflow-visible  bg-teal-800/70 rounded-lg">
-      <button onClick={() => setIsOpen(v => !v)} className="relative flex gap-1 items-center">
+    <div ref={ref} className="scale-75 md:scale-90 flex flex-col gap-2 p-2 px-3 relative z-70 overflow-visible  bg-teal-800/70 rounded-lg -mr-4">
+      <button onClick={() => setIsOpen(v => !v)} className="relative flex gap-1 items-center opacity-55 hover:opacity-100 transition-all duration-200">
         <span className="z-10 text-white">
           {locale}
         </span>
-        <Image width={15} height={10} src={languageItems[locale].image.src || ''} alt={`lang-${locale}`} className="opacity-35 h-3" />
+        <Image width={15} height={10} src={languageItems[locale].image.src || ''} alt={`lang-${locale}`} className=" h-2" />
       </button>
       <div className={`absolute top-12 left-0 gap-2 ${isOpen ? 'flex flex-col' : 'hidden'} rounded-lg p-2 px-3 bg-teal-800/70`}>
         {
@@ -74,7 +72,7 @@ export const ChangeLangDropdown: FC = () => {
               <span className=" opacity-95 hover:opacity-95 text-white ">
                 {lang}
               </span>
-              <Image width={15} height={2} src={image.src} alt={`lang-${lang}`} className=" h-3" />
+              <Image width={15} height={2} src={image.src} alt={`lang-${lang}`} className=" h-2" />
             </a>
           ))
         }

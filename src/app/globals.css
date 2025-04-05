@@ -49,3 +49,9 @@ select {
 .fontf-nunito {
   font-family: "Nunito", sans-serif;
 }
+
+input,
+textarea,
+select {
+  outline: none;
+}

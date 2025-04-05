@@ -8,7 +8,7 @@ import { Button, LessonsList } from '@/common/components';
 function MainView() {
   // const t = useTranslations('Home');
   return (
-    <div className="relative w-4/6 min-w-[320px] mx-auto flex flex-col items-center justify-center text-white text-center p-10 bg-teal-600 bg-opacity-40 rounded-3xl">
+    <div className="relative w-4/6 min-w-[320px] max-w-[900px] mx-auto flex flex-col items-center justify-center text-white text-center p-10 bg-teal-600 bg-opacity-40 rounded-3xl">
       <Image src="/media/svg/logo-white.svg" height={500} width={500} alt='logo' />
       <p className="md:text-4xl mt-4">The best way to learn</p>
       <button className="mt-6 px-6 py-3 border border-white rounded-lg text-lg font-medium hover:bg-white hover:text-black transition-all">
@@ -29,6 +29,8 @@ export default function Home() {
         <div className="mb-20" />
 
       </div>
+
+      <div className="mb-10" />
 
       <LessonsList lessons={lessons} title="Choose your way" />
 

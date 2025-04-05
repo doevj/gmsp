@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FC } from 'react'
+import { FC } from 'react';
 import Image from 'next/image';
 
 type Lesson = {
@@ -32,12 +32,12 @@ const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }
         {buttonText}
       </Link>
     </div>
-  )
-}
+  );
+};
 
 export const LessonsList: FC<LessonsListProps> = ({ title, lessons }) => {
   return (
-    <div className="relative py-10 z-10">
+    <div className="relative pb-10 z-10">
       <h1 className="text-center text-[2rem] md:text-[3.5rem] font-bold text-teal-600 mb-8 font-serif">
         {title}
       </h1>
@@ -49,4 +49,4 @@ export const LessonsList: FC<LessonsListProps> = ({ title, lessons }) => {
       </div>
     </div>
   );
-}
+};
