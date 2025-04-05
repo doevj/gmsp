@@ -1,2 +1,2 @@
-export { Video } from './video'
-export { Testimonials } from './Testimonials'
+export { Video } from './video';
+export { Testimonials } from './Testimonials';

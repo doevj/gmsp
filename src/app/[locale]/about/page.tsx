@@ -7,19 +7,19 @@ const methodologyItems = [
   {
     imgUrl: '/media/svg/trial-class.svg',
     title: 'Personalized',
-    description: "Each student is different, with unique interests, goals, and ways of learning. That’s why our approach starts with getting to know you: we assess your needs and design a learning plan tailored to you."
+    description: 'Each student is different, with unique interests, goals, and ways of learning. That’s why our approach starts with getting to know you: we assess your needs and design a learning plan tailored to you.'
   },
   {
     imgUrl: '/media/svg/pair-classes.svg',
     title: 'Flexible',
-    description: "We don’t sell an innovative methodology as the only solution because we understand that student diversity requires flexibility. We combine modern tools with traditional methods to make the most of each approach."
+    description: 'We don’t sell an innovative methodology as the only solution because we understand that student diversity requires flexibility. We combine modern tools with traditional methods to make the most of each approach.'
   },
   {
     imgUrl: '/media/svg/group-classes.svg',
     title: 'Student-Centered',
-    description: "Learning revolves around you. We adapt to your pace, your goals, and your learning style so you can progress effectively and enjoy the process. Learning Spanish shouldn’t be standardized—it should be personalized."
+    description: 'Learning revolves around you. We adapt to your pace, your goals, and your learning style so you can progress effectively and enjoy the process. Learning Spanish shouldn’t be standardized—it should be personalized.'
   },
-]
+];
 
 const AboutPage: React.FC = () => {
   const t = useTranslations('About');
@@ -33,7 +33,7 @@ const AboutPage: React.FC = () => {
         </div>
 
         <div className='rounded-3xl overflow-hidden'>
-          <Image height={500} width={500} src={"/media/img/img-about.jpg"} alt='portrait' className='rounded-3xl' />
+          <Image height={500} width={500} src={'/media/img/img-about.jpg'} alt='portrait' className='rounded-3xl' />
         </div>
       </div>
 

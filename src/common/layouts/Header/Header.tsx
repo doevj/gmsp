@@ -20,13 +20,13 @@ export const Header: FC = () => {
         <ClassesBtn locale={locale} />
       </MenuItems>
 
-      <div className='hidden sm:flex ml-auto items-center md:gap-2'>
-        <Link href={`/${locale}/register`} className='scale-90 hover:scale-95 transition'>
+      <div className='hidden sm:flex ml-auto items-center'>
+        <Link href={`/${locale}/register`} className='scale-[83%] hover:opacity-80 transition'>
           <Button variant='active' className='text-white w-[100px]'>
             Register
           </Button>
         </Link>
-        <Link href={`/${locale}/login`} className=' scale-90 hover:scale-95 transition'>
+        <Link href={`/${locale}/login`} className=' scale-[83%] hover:opacity-80 transition'>
           <Button variant='active' className='text-white w-[100px]'>
             Login
           </Button>
