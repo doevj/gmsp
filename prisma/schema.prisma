@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Course {
+  id       String @id @default(cuid())
+  name     String
+  price    Float
+  duration Int
+
+  User User[]
+}
+
+model User {
+  id       String         @id @default(cuid())
+  name     String
+  email    String         @unique
+  password String
+  tokens   RefreshToken[]
+
+  courses Course[]
+}
+
+model RefreshToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}

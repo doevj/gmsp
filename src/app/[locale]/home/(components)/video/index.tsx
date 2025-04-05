@@ -1,15 +1,14 @@
-'use client'
-import React, { FC, useEffect } from 'react'
+'use client';
+import React, { FC, useEffect } from 'react';
 
 export const Video: FC = () => {
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    console.log(videoRef.current)
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.95;
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -17,5 +16,5 @@ export const Video: FC = () => {
         <source src="/media/video.mp4" type="video/mp4" />
       </video>
     </>
-  )
-}
+  );
+};

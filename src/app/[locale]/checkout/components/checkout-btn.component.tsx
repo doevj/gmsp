@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { loadStripe } from "@stripe/stripe-js";
-import { useLocale } from "next-intl";
-import { useState } from "react";
+import { loadStripe } from '@stripe/stripe-js';
+import { useLocale } from 'next-intl';
+import { FC, useState } from 'react';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-export const CheckoutButton: React.FC<{
+export const CheckoutButton: FC<{
   items: {
     name: string;
     price: number;
@@ -22,9 +22,9 @@ export const CheckoutButton: React.FC<{
   const handleCheckout = async () => {
     onClick();
     setLoading(true);
-    const response = await fetch("/api/checkout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const response = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items, locale, clientName }),
     });
 
@@ -38,9 +38,9 @@ export const CheckoutButton: React.FC<{
     <button
       onClick={handleCheckout}
       disabled={disabled || loading}
-      className="text-white px-4 py-2 bg-green-500 rounded border hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+      className="text-white px-4 py-2 bg-teal-500 rounded border hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      {loading ? "Processing..." : "Checkout"}
+      {loading ? 'Processing...' : 'Checkout'}
     </button>
   );
 };

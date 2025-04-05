@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { sendMail } from "@/lib/send-mail";
-import { useReducer, useState } from "react";
-import { CheckoutButton, Class } from "./components";
-import { useTranslations } from "next-intl";
-import { Selector } from "@/common/components";
+import { sendMail } from '@/lib/send-mail';
+import { useReducer, useState } from 'react';
+import { CheckoutButton, Class } from './components';
+import { useTranslations } from 'next-intl';
+import { Selector } from '@/common/components';
 
 type ClassItem = {
   name: string;
@@ -13,35 +13,35 @@ type ClassItem = {
 }
 
 const items = [
-  { name: "Individual Classes", price: 23, quantity: 0 },
-  { name: "Pair Classes", price: 17, quantity: 0 },
-  { name: "Group Classes", price: 14, quantity: 0 },
+  { name: 'Individual Classes', price: 23, quantity: 0 },
+  { name: 'Pair Classes', price: 17, quantity: 0 },
+  { name: 'Group Classes', price: 14, quantity: 0 },
 ] as ClassItem[];
 
-type Action = { type: "INCREMENT"; name: string } | { type: "DECREMENT"; name: string };
+type Action = { type: 'INCREMENT'; name: string } | { type: 'DECREMENT'; name: string };
 
 const reducer = (state: ClassItem[], action: Action): ClassItem[] => {
   return state.map((item) =>
     item.name === action.name
       ? {
         ...item,
-        quantity: action.type === "INCREMENT" ? item.quantity + 1 : Math.max(0, item.quantity - 1),
+        quantity: action.type === 'INCREMENT' ? item.quantity + 1 : Math.max(0, item.quantity - 1),
       }
       : item
   );
 };
 
 const options = [
-  { value: "Spanish for Beginners", label: "Spanish for Beginners" },
-  { value: "Intermediate Spanish", label: "Intermediate Spanish" },
-  { value: "Advanced Spanish", label: "Advanced Spanish" },
-  { value: "Spanish for kids", label: "Spanish for kids" },
-  { value: "Business Spanish", label: "Business Spanish" },
-  { value: "Spanish for travel", label: "Spanish for travel" },
-  { value: "Grammar lessons", label: "Grammar lessons" },
-  { value: "Writing practice", label: "Writing practice" },
-  { value: "Spanish Conversation", label: "Spanish Conversation" },
-  { value: "Spanish Pronunciation", label: "Spanish Pronunciation" },
+  { value: 'Spanish for Beginners', label: 'Spanish for Beginners' },
+  { value: 'Intermediate Spanish', label: 'Intermediate Spanish' },
+  { value: 'Advanced Spanish', label: 'Advanced Spanish' },
+  { value: 'Spanish for kids', label: 'Spanish for kids' },
+  { value: 'Business Spanish', label: 'Business Spanish' },
+  { value: 'Spanish for travel', label: 'Spanish for travel' },
+  { value: 'Grammar lessons', label: 'Grammar lessons' },
+  { value: 'Writing practice', label: 'Writing practice' },
+  { value: 'Spanish Conversation', label: 'Spanish Conversation' },
+  { value: 'Spanish Pronunciation', label: 'Spanish Pronunciation' },
 ];
 
 export default function Checkout() {
@@ -53,7 +53,7 @@ export default function Checkout() {
 
   const mailText = `attempt, Name: ${name}\n\n${classItems
     .map((item) => `${item.name}: ${item.quantity}`)
-    .join("\n")}
+    .join('\n')}
     \n\nChosen class type: ${chosenVariant}
     \n\nTotal: ${classItems.reduce((acc, item) => acc + item.price * item.quantity, 0)} €
     \n\nEmail
@@ -66,13 +66,15 @@ export default function Checkout() {
       subject: 'New Contact Us Form',
       text: mailText,
     });
-    console.log({ response })
-  }
+    console.log({ response });
+  };
 
   const total = classItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
-    <div className="bg-amber-100 bg-opacity-50 min-h-[80vh] p-10 min-w-[300px] flex flex-col items-center align-center justify-center">
+    <div className="w-full flex flex-col gap-2 items-center justify-center p-5">
+      <div className="mb-20" />
+
       <h1 className="w-full font-bold text-center align-center text-4xl mb-9"> {t('getClasses')} </h1>
 
       <div className="mb-10 flex flex-col gap-2 w-2/5 min-w-[310px]">
@@ -117,8 +119,8 @@ export default function Checkout() {
             name={item.name}
             price={item.price}
             quantity={item.quantity}
-            increment={() => dispatch({ type: "INCREMENT", name: item.name })}
-            decrement={() => dispatch({ type: "DECREMENT", name: item.name })}
+            increment={() => dispatch({ type: 'INCREMENT', name: item.name })}
+            decrement={() => dispatch({ type: 'DECREMENT', name: item.name })}
             key={item.name}
           />
         ))}
@@ -139,5 +141,5 @@ export default function Checkout() {
 
       <CheckoutButton items={classItems} onClick={onSubmit} disabled={total < 1 || name?.length < 4} clientName={name} />
     </div>
-  )
+  );
 }

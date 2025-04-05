@@ -7,7 +7,6 @@ import { Button, LessonsList } from '@/common/components';
 
 function MainView() {
   // const t = useTranslations('Home');
-
   return (
     <div className="relative w-4/6 min-w-[320px] mx-auto flex flex-col items-center justify-center text-white text-center p-10 bg-teal-600 bg-opacity-40 rounded-3xl">
       <Image src="/media/svg/logo-white.svg" height={500} width={500} alt='logo' />
@@ -16,7 +15,7 @@ function MainView() {
         {'Start Learning'}
       </button>
     </div>
-  )
+  );
 }
 
 export default function Home() {
@@ -24,9 +23,6 @@ export default function Home() {
     <>
       <div className="w-full p-10 relative ">
         <Video />
-
-        <div className="mb-20" />
-        <div className="mb-20" />
 
         <MainView />
 

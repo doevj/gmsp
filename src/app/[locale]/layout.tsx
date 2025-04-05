@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { Header, Footer, Social } from "@/common/layouts";
+import { Header, Footer, Social } from '@/common/layouts';
 import '../globals.css';
 export default async function LocaleLayout({
   children,
@@ -24,6 +24,7 @@ export default async function LocaleLayout({
       <body >
         <NextIntlClientProvider messages={messages}>
           <Header />
+          <div className='mb-16' />
           <div className='min-h-[100vh]'>
             {children}
           </div>

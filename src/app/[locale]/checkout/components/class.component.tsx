@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC } from 'react';
 
 type Props = {
   name: string;
@@ -12,7 +12,7 @@ export const Class: FC<Props> = ({
   name, price, quantity, increment, decrement
 }) => {
   return (
-    <div className="bg-white p-4 rounded-md mb-3 min-w-[320px]">
+    <div className="bg-teal-300/30 p-4 rounded-md mb-3 min-w-[320px]">
       <h1 className="text-xl font-bold">{name}</h1>
 
       <div className="flex gap-5 items-center mt-4">
@@ -38,5 +38,5 @@ export const Class: FC<Props> = ({
       </div>
 
     </div>
-  )
-}
+  );
+};

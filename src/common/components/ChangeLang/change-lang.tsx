@@ -1,22 +1,18 @@
-'use client'
-import { Lang } from "@/consts";
+'use client';
+import { Lang } from '@/consts';
 // import Image from "next/image";
-import { FC, useEffect, useRef, useState } from "react";
-import en from "./assets/uk.svg";
-import ru from "./assets/ru.svg";
-import es from "./assets/es.svg";
-import { useLocale } from "next-intl";
-import { usePathname } from "next/navigation";
-import { removeLangPrefix } from "@/utils";
+import { FC, useEffect, useRef, useState } from 'react';
+import en from './assets/uk.svg';
+import ru from './assets/ru.svg';
+import es from './assets/es.svg';
+import { useLocale } from 'next-intl';
+import { usePathname } from 'next/navigation';
+import { removeLangPrefix } from '@/utils';
+import Image from 'next/image';
+// import Image from 'next/image';
 
 export const getLanguageItems = () => {
   return {
-    ru: {
-      title: 'Русский',
-      short: 'ру',
-      lang: 'ru' as Lang,
-      image: ru,
-    },
     en: {
       title: 'English',
       short: 'en',
@@ -29,8 +25,14 @@ export const getLanguageItems = () => {
       lang: 'es' as Lang,
       image: es,
     },
-  }
-}
+    ru: {
+      title: 'Русский',
+      short: 'ру',
+      lang: 'ru' as Lang,
+      image: ru,
+    },
+  };
+};
 
 export const ChangeLangDropdown: FC = () => {
   const locale = useLocale();
@@ -39,45 +41,45 @@ export const ChangeLangDropdown: FC = () => {
   const languageItems: Record<string, { image: { src: string }, title: string, short: string, lang: string }> = getLanguageItems();
   const [isOpen, setIsOpen] = useState(false);
 
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node))
-        setIsOpen(false)
+        setIsOpen(false);
     };
 
-    document.addEventListener('click', handleClickOutside, true)
-    return () => document.removeEventListener('click', handleClickOutside, true)
-  }, [])
+    document.addEventListener('click', handleClickOutside, true);
+    return () => document.removeEventListener('click', handleClickOutside, true);
+  }, []);
 
   return (
-    <div ref={ref} className="flex gap-2 p-1 px-2 mt-3 ml-auto mb-auto relative z-70 overflow-visible border-2 border-teal-500 rounded-lg">
-      <div className={` gap-2 ${isOpen ? 'flex' : 'hidden'}`}>
+    <div ref={ref} className="scale-75 md:scale-90 flex flex-col gap-2 p-2 px-3 relative z-70 overflow-visible  bg-teal-800/70 rounded-lg">
+      <button onClick={() => setIsOpen(v => !v)} className="relative flex gap-1 items-center">
+        <span className="z-10 text-white">
+          {locale}
+        </span>
+        <Image width={15} height={10} src={languageItems[locale].image.src || ''} alt={`lang-${locale}`} className="opacity-35 h-3" />
+      </button>
+      <div className={`absolute top-12 left-0 gap-2 ${isOpen ? 'flex flex-col' : 'hidden'} rounded-lg p-2 px-3 bg-teal-800/70`}>
         {
-          Object.values(languageItems).map(({ title, lang }) => lang !== locale && (
+          Object.values(languageItems).map(({ title, lang, image }) => lang !== locale && (
             <a
               href={path ? `/${lang}${removeLangPrefix(path)}` : '#'}
               title={title}
               aria-label={title}
               key={lang}
-              className="relative"
+              className="relative flex gap-1 items-center opacity-35 hover:opacity-100 transition-all duration-200"
             >
-              <span className=" opacity-35 hover:opacity-95">
+              <span className=" opacity-95 hover:opacity-95 text-white ">
                 {lang}
               </span>
-              {/* <Image width={25} height={17} src={image.src} alt={`lang-${lang}`} className="opacity-35 hover:opacity-95" /> */}
+              <Image width={15} height={2} src={image.src} alt={`lang-${lang}`} className=" h-3" />
             </a>
           ))
         }
       </div>
-      <button onClick={() => setIsOpen(v => !v)} className="relative">
-        {/* <Image width={25} height={17} src={languageItems[locale].image.src || ''} alt={`lang-${locale}`} className="hover:opacity-90" /> */}
-        <span className="z-10 text-white">
-          {locale}
-        </span>
-      </button>
     </div>
-  )
-}
+  );
+};
 

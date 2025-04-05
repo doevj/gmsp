@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FC } from 'react'
+import { FC } from 'react';
 
 export default function Contacts() {
   return (
@@ -9,23 +9,23 @@ export default function Contacts() {
       <ContactForm />
       <Socials />
     </div>
-  )
+  );
 }
 
 async function sendMessage(formData: FormData) {
-  "use server";
-  const name = formData.get("name");
-  const email = formData.get("email");
-  const message = formData.get("message");
+  'use server';
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const message = formData.get('message');
 
   // Handle form submission logic here, e.g., saving to a database or sending an email
-  console.log("Form submitted:", { name, email, message });
+  console.log('Form submitted:', { name, email, message });
 }
 
 const ContactForm: FC = () => {
   return (
-    <div className=" flex justify-center items-center p-4">
-      <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md relative">
+    <div className="flex justify-center items-center p-4 w-[50vw] max-w-[500px] min-w-[319px]">
+      <div className="bg-white p-6 rounded-2xl shadow-lg relative w-full">
         <div className="absolute top-0 left-0 w-full bg-teal-500 text-white text-xl font-bold p-3 rounded-t-2xl">
           Get in touch!
         </div>
@@ -67,20 +67,20 @@ const ContactForm: FC = () => {
 };
 
 const socialItems = [
-  { src: "/media/svg/envelope.svg", label: "Email", href: "#" },
-  { src: "/media/svg/instagram.svg", label: "Instagram", href: "#" },
-  { src: "/media/svg/telegram.svg", label: "Telegram", href: "#" },
-  { src: "/media/svg/whatsapp.svg", label: "WhatsApp", href: "#" },
-]
+  { src: '/media/svg/envelope.svg', label: 'Email', href: '#' },
+  { src: '/media/svg/instagram.svg', label: 'Instagram', href: '#' },
+  { src: '/media/svg/telegram.svg', label: 'Telegram', href: '#' },
+  { src: '/media/svg/whatsapp.svg', label: 'WhatsApp', href: '#' },
+];
 
 const Socials: FC = () => {
   return (
     <div className='flex gap-5 p-8' >
       {socialItems.map(({ src, label, href }) => (
         <a key={label} href={href} aria-label={label} className='hover:scale-[1.09] transition'>
-          <Image className='filter invert' src={src} alt={label} height={30} width={30} />
+          <Image className='filter invert' src={src} alt={label} height={35} width={35} />
         </a>
       ))}
     </div>
-  )
-}
+  );
+};
