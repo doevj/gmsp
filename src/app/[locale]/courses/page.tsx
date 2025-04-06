@@ -42,7 +42,7 @@ const lessons = [
 
 export default function Lessons() {
   return (
-    <div className="container mx-auto px-4 py-20 flex flex-wrap align-center justify-center gap-5">
+    <div className="container mx-auto sm:px-4 py-20 flex flex-wrap align-center justify-center gap-5">
 
       <LessonsList lessons={lessons} title="Discover your perfect path to learning Spanish" />
     </div>

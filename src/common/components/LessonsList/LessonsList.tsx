@@ -16,7 +16,7 @@ type LessonsListProps = {
 
 const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }) => {
   return (
-    <div className="bg-green-50 rounded-2xl shadow-md p-12 text-center w-120 border-teal-500 border-2 mx-auto flex flex-col items-center gap-3 cursor-pointer hover:scale-[1.02] transition duration-300">
+    <div className="bg-green-50 rounded-2xl shadow-md p-3 sm:p-12 py-12 text-center  border-teal-500 border-2 mx-auto flex flex-col items-center gap-3 cursor-pointer hover:scale-[1.02] transition duration-300">
       <h2 className="text-xl mb-4 uppercase font-spectral font-semibold text-teal-600">{title}</h2>
       {imageUrl && (
         <Image
@@ -24,7 +24,7 @@ const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }
           alt="Illustration"
           width={300}
           height={300}
-          className="max-w-[300px] max-h-[300px] min-w-[300px] min-h-[300px] object-cover mx-auto"
+          className="sm:max-w-[300px] sm:max-h-[300px] sm:min-w-[300px] sm:min-h-[300px] object-cover mx-auto"
         />
       )}
       <p className="text-gray-700 max-w-[290px]">{description}</p>

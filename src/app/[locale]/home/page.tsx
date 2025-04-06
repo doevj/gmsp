@@ -21,12 +21,14 @@ function MainView() {
 export default function Home() {
   return (
     <>
-      <div className="w-full p-10 relative ">
+      <div className="w-full sm:p-10 relative ">
         <Video />
+
+        <div className="mt-[7rem]" />
 
         <MainView />
 
-        <div className="mb-20" />
+        <div className="mb-[13rem]" />
 
       </div>
 

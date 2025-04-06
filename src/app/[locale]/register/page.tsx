@@ -1,6 +1,6 @@
 export default function Register() {
   return (
-    <div className='min-h-[100vh] w-full flex flex-col gap-20 items-center justify-center bg-teal-600/80 '>
+    <div className='min-h-[100vh] w-full flex flex-col gap-20 items-center justify-center bg-teal-600/90 '>
 
       <h2 className='text-4xl text-center font-bold text-white'>Register</h2>
 

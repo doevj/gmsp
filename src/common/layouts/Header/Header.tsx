@@ -1,9 +1,9 @@
-import { useLocale } from 'next-intl';
-import { FC } from 'react';
-import Link from 'next/link';
 import { Logo } from '@/common/assets/Logo';
-import { Button, ChangeLangDropdown } from '@/common/components';
-import { ClassesBtn, MenuItems } from './components';
+import { ChangeLangDropdown } from '@/common/components';
+import { useLocale } from 'next-intl';
+import Link from 'next/link';
+import { FC } from 'react';
+import { ClassesBtn, MenuItems, RegisterZone } from './components';
 
 export const Header: FC = () => {
   const locale = useLocale();
@@ -20,18 +20,7 @@ export const Header: FC = () => {
         <ClassesBtn locale={locale} />
       </MenuItems>
 
-      <div className='hidden sm:flex ml-auto items-center'>
-        <Link href={`/${locale}/register`} className='scale-[83%] hover:opacity-80 transition'>
-          <Button variant='active' className='text-white w-[100px]'>
-            Register
-          </Button>
-        </Link>
-        <Link href={`/${locale}/login`} className=' scale-[83%] hover:opacity-80 transition'>
-          <Button variant='active' className='text-white w-[100px]'>
-            Login
-          </Button>
-        </Link>
-      </div>
+      <RegisterZone />
 
       <div className="ml-auto sm:hidden" />
       <ChangeLangDropdown />
