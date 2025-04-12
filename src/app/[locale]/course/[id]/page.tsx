@@ -1,14 +1,18 @@
-export default async function CoursePage({
-  params,
-}: {
+import { DropDownSelector } from "@/common/components";
+
+type Props = {
   params: Promise<{ id: string }>
-}) {
+}
+
+export default async function CoursePage({ params }: Props) {
   const { id } = await params;
-  console.log({ id });
+
   return (
-    <div className="w-full p-10 relative ">
-      <h1>Course Page</h1>
-      <p>Course details will be displayed here.</p>
+    <div className="w-full h-screen p-10 relative ">
+      <div className="mb-10" />
+      <DropDownSelector />
+      <div className="mb-10" />
     </div>
   );
 }
+

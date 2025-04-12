@@ -26,14 +26,14 @@ const AboutPage: React.FC = () => {
 
   return (
     <div className="relative w-full bg-teal-600/90">
-      <div className='w-[100vw] h-full flex flex-col md:flex-row gap-10 justify-center py-[10rem] px-20 md:px-40'>
-        <div className='flex flex-col'>
-          <h1 className='font-bold font-nunito text-white text-4xl max-w-[300px] mb-7'>{t('title')}</h1>
-          <p className='max-w-[50vw] text-xl fontf-nunito '>{t('message')}</p>
+      <div className='w-[100vw] h-full flex flex-col md:flex-row items-center md:items-start gap-10 justify-center py-[5rem] px-5 md:px-40 mb-[10rem]'>
+        <div className='flex flex-col overflow-visible'>
+          <h1 className='font-bold font-nunito text-white text-3xl md:text-4xl max-w-[300px] mb-7'>{t('title')}</h1>
+          <p className='md:max-w-[50vw] md:min-w-[300px] md:text-xl fontf-nunito overflow-visible'>{t('message')}</p>
         </div>
 
         <div className='rounded-3xl overflow-hidden'>
-          <Image height={500} width={500} src={'/media/img/img-about.jpg'} alt='portrait' className='rounded-3xl' />
+          <Image height={400} width={400} src={'/media/img/img-about.jpg'} alt='portrait' className='rounded-3xl' />
         </div>
       </div>
 
@@ -59,14 +59,14 @@ const AboutPage: React.FC = () => {
         </div>
       </div>
 
-      <div className='w-full flex flex-wrap gap-10 items-center justify-center mb-20 p-10'>
+      <div className='w-full flex flex-wrap sm:gap-10 items-center justify-center mb-20 md:p-10'>
         <Button className='py-4 px-6 sm:py-4 sm:px-6 bg-gray-100/30 text-white font-bold rounded-lg shadow-md hover:bg-teal-600 hover:text-white'>{'Lets connect!'}</Button>
         <Button className='py-4 px-6 sm:py-4 sm:px-6 bg-gray-100/30 text-white font-bold rounded-lg shadow-md hover:bg-teal-600 hover:text-white'>{'Test your level'}</Button>
       </div>
 
-      <div className='h-[300px] w- flex flex-col items-center justify-center mt-4 bg-white py-8 px-8 text-4xl font-bold font-nunito no-underline mb-20'>
+      <div className=' w- flex flex-col items-center justify-center mt-4 bg-white py-10 px-8 text-4xl font-bold font-nunito no-underline mb-20'>
         <h4 className='text-teal-600 mb-7'>Schedule your free trial class</h4>
-        <Button className="mt-6 px-6 py-3 border text-teal-600 border-teal-600 rounded-lg text-lg font-medium hover:bg-teal-600 hover:text-white transition-all sm:scale-125 scale-125">
+        <Button className="mt-6 px-6 py-3 border text-teal-600 border-teal-600 rounded-lg text-lg font-medium hover:bg-teal-600 hover:text-white transition-all scale-[100%!important] sm:scale-[125%!important]">
           {'Book now'}
         </Button>
       </div>

@@ -1,17 +1,35 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript", "eslint:recommended", "plugin:react/recommended"],
-  "plugins": ["react"],
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:tailwindcss/recommended"
+  ],
+  "plugins": [
+    "react",
+    "tailwindcss"
+  ],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "no-console": "warn",
     "no-unused-vars": "warn",
-    "semi": ["error", "always"],
-    "quotes": ["error", "single"]
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "tailwindcss/classnames-order": "error",
+    "tailwindcss/no-contradicting-classname": "error"
   },
   "env": {
     "browser": true,
     "node": true,
-    "jest": true
+    "jest": true,
+    "cypress": true
   },
   "parserOptions": {
     "ecmaVersion": 2020,

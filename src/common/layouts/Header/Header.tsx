@@ -9,12 +9,10 @@ export const Header: FC = () => {
   const locale = useLocale();
 
   return (
-    <nav className={'fixed top-0 w-full h-16 bg-teal-600/70 backdrop-blur-lg z-50 flex items-center gap-3 px-5 overflow-visible max-h-screen'}>
-      <div className="hidden md:flex items-center space-x-1">
-        <Link href={`/${locale}/home`} className="scale-[70%] sm:scale-[100%]">
-          <Logo />
-        </Link>
-      </div>
+    <nav className={styles.nav}>
+      <Link href={`/${locale}/home`} className={styles.logo}>
+        <Logo />
+      </Link>
 
       <MenuItems >
         <ClassesBtn locale={locale} />
@@ -27,3 +25,8 @@ export const Header: FC = () => {
     </nav>
   );
 };
+
+const styles = {
+  nav: "fixed top-0 w-full h-16 bg-teal-600/70 backdrop-blur-lg z-50 flex items-center md:gap-3 px-5 overflow-visible max-h-screen",
+  logo: "items-center ml-[-2rem] sm:ml-0 hover:cursor-pointer scale-[0.5] sm:scale-[100%]"
+}
