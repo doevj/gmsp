@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { useTranslations } from 'next-intl'
 import { ClassItemInput, Input, SelectInput, SubmitButton } from '../inputs'
+import { redirect } from 'next/navigation';
 
 const variantOptions = [
   { value: 'Spanish for Beginners', label: 'Spanish for Beginners' },
@@ -53,7 +54,7 @@ const submitCheckout = async (data: FormData) => {
 
   const mailText = `attempt, Name: ${name}\n\n${individual} Individual Classes\n${pair} Pair Classes\n${group} Group Classes\n\nChosen class type: ${variant}\n\nTotal: ${individual * 25 + pair * 17 + group * 14} €\n\nEmail\n${email}`
   // Send email 
-  const response = await fetch("/api/send-email", {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/send-email`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -77,8 +78,6 @@ const submitCheckout = async (data: FormData) => {
     locale: 'en',
     clientName: name,
   })
-
-  console.log({ checkoutRes })
 }
 
 type handleCheckoutParams = {
@@ -92,16 +91,17 @@ type handleCheckoutParams = {
 }
 
 const handleCheckout = async ({ items, locale, clientName }: handleCheckoutParams) => {
-  const response = await fetch('/api/checkout', {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/checkout`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ items, locale, clientName }),
   });
 
   const { sessionId } = await response.json();
-  const stripe = await stripePromise;
-  await stripe?.redirectToCheckout({ sessionId });
+
+  if (sessionId) {
+    redirect(`/${locale}/checkout/stripe?sessionId=${sessionId}`);
+  }
 };
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
-

@@ -21,9 +21,11 @@ export default function Home() {
         <div className="relative w-4/6 min-w-[320px] max-w-[900px] mx-auto flex flex-col items-center justify-center text-white text-center p-10 bg-teal-900 bg-opacity-40 rounded-3xl">
           <Image src="/media/svg/logo-white.svg" height={500} width={500} alt='logo' />
           <p className="md:text-4xl mt-4">{t('The best way to learn')}</p>
-          <button className="mt-6 px-6 py-3 border border-white rounded-lg text-lg font-medium hover:bg-white hover:text-black transition-all">
-            {t('Start Learning')}
-          </button>
+          <Link href={`/${locale}/courses`}>
+            <button className="mt-6 px-6 py-3 border border-white rounded-lg text-lg font-medium hover:bg-white hover:text-black transition-all">
+              {t('Start Learning')}
+            </button>
+          </Link>
         </div>
 
         <div className="mb-[13rem]" />
@@ -40,7 +42,9 @@ export default function Home() {
 
       <div className=' mb-7 flex flex-col items-center justify-center mt-4 bg-teal-600/80 text-white py-10 px-8 text-4xl font-bold font-nunito no-underline'>
         <h4> {t('Schedule your free trial class')} </h4>
-        <Button className="mt-6 px-6 py-3 border scale-[1!important] border-white rounded-lg text-lg font-medium hover:bg-white hover:text-teal-500 transition-all">Book now</Button>
+        <Link href={`/${locale}/contacts`}>
+          <Button className="mt-6 px-6 py-3 border scale-[1!important] border-white rounded-lg text-lg font-medium hover:bg-white hover:text-teal-500 transition-all">{t('Book now')}</Button>
+        </Link>
       </div>
     </>
   );

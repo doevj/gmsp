@@ -1,6 +1,7 @@
 import { Button } from '@/common/components';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const methodologyItems = [
@@ -22,6 +23,7 @@ const methodologyItems = [
 ];
 
 const AboutPage: React.FC = () => {
+  const locale = useLocale();
   const t = useTranslations('About');
 
   return (
@@ -65,10 +67,12 @@ const AboutPage: React.FC = () => {
       </div>
 
       <div className=' w- flex flex-col items-center justify-center mt-4 bg-white py-10 px-8 text-4xl font-bold font-nunito no-underline mb-20'>
-        <h4 className='text-teal-600 mb-7'>{t('Schedule your free trial class')}</h4>
-        <Button className="mt-6 px-6 py-3 border text-teal-600 border-teal-600 rounded-lg text-lg font-medium hover:bg-teal-600 hover:text-white transition-all scale-[100%!important] sm:scale-[125%!important]">
-          {t('Book now')}
-        </Button>
+        <h4 className='text-teal-600 mb-2'>{t('Schedule your free trial class')}</h4>
+        <Link href={`/${locale}/contacts`}>
+          <Button className="mt-6 px-6 py-3 border text-teal-600 border-teal-600 rounded-lg text-lg font-medium hover:bg-teal-600 hover:text-white transition-all ">
+            {t('Book now')}
+          </Button>
+        </Link>
       </div>
     </div>
   );

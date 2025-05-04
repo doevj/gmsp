@@ -7,11 +7,18 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 
 export async function POST(req: Request) {
   try {
-    const { items, locale } = await req.json();
+    const { items, locale } = (await req.json()) as {
+      items: {
+        name: string;
+        price: number;
+        quantity: number;
+      }[];
+      locale: string;
+    };
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: items.map((item: { name: string; price: number; quantity: number, locale: string }) => ({
+      line_items: items.filter(v => v.quantity > 0).map((item) => ({
         price_data: {
           currency: 'eur',
           product_data: { name: item.name },
@@ -20,12 +27,13 @@ export async function POST(req: Request) {
         quantity: item.quantity,
       })),
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/home`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/home`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/checkout/thank-you`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/wrong`,
     });
 
     return NextResponse.json({ sessionId: session.id });
   } catch (error) {
+    console.error('Error creating checkout session:', error);
     return NextResponse.json({ error: (error as Error).message }, { status: 500 });
   }
 }

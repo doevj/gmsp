@@ -13,7 +13,7 @@ export default function Checkout() {
 
       <div className='relative w-full sm:w-2/3 max-w-[500px] rounded-3xl overflow-visible'>
         <div className="absolute top-[-3rem] left-0 w-full bg-teal-500 text-white text-xl text-center font-bold p-3 rounded-t-2xl">
-          <span>checkout</span>
+          <span>{tt('checkout')}</span>
         </div>
 
         <CheckoutForm />

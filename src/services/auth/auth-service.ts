@@ -20,7 +20,6 @@ export class AuthService {
 
   public async logout(): Promise<void> {
     this.authRepo.logout();
-    this.isAuthenticated = false;
     console.log('Logged out');
   }
 

@@ -48,7 +48,8 @@
     "login": "Login",
     "logout": "Logout",
     "password": "Password",
-    "confirmPassword": "Confirm Password"
+    "confirmPassword": "Confirm Password",
+    "checkout": "Checkout"
   },
   "Header": {
     "Home": "Home",
@@ -61,7 +62,8 @@
     "description": "Grama Spanish Language School is a language school that offers Spanish classes for all levels. We offer classes for beginners, intermediate, and advanced students. Our classes are designed to help you learn Spanish in a fun and interactive way.",
     "The best way to learn": "The best way to learn",
     "Start Learning": "Start Learning",
-    "Schedule your free trial class": "Schedule your free trial class"
+    "Schedule your free trial class": "Schedule your free trial class",
+    "Book now": "Book now"
   },
   "Index": {
     "title": "Welcome to the index page",

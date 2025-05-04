@@ -16,7 +16,7 @@ export const Header: FC = () => {
       </Link>
 
       <MenuItems >
-        <ClassesBtn locale={locale} />
+        {/* <ClassesBtn locale={locale} /> */}
       </MenuItems>
 
       <RegisterZone />
