@@ -38,7 +38,7 @@ const handleRegister = async (formData: FormData) => {
     throw new Error('All fields are required');
   }
 
-  fetch('/api/register', {
+  await fetch('/api/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

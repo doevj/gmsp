@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { FC } from 'react';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
+import { toSnakeCase } from '@/utils';
 
 type Lesson = {
   title: string;
@@ -15,8 +17,9 @@ type LessonsListProps = {
 }
 
 const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }) => {
+  const locale = useLocale();
   return (
-    <div className="bg-green-50 rounded-2xl shadow-md p-4 py-8 text-center border-teal-500 border-2 mx-auto flex flex-col items-center gap-3 cursor-pointer scale-90 hover:scale-[0.95] transition duration-300">
+    <div className="bg-green-50 min-w-[320px] rounded-2xl shadow-md p-4 py-8 text-center border-teal-500 border-2 mx-auto flex flex-col items-center gap-3 cursor-pointer scale-90 hover:scale-[0.95] transition duration-300 overflow-x-hidden">
       <h2 className="text-xl mb-4 uppercase font-spectral font-semibold text-teal-600">{title}</h2>
       {imageUrl && (
         <Image
@@ -28,7 +31,7 @@ const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }
         />
       )}
       <p className="text-gray-700 max-w-[290px]">{description}</p>
-      <Link href={'#'} className="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 mt-auto scale-110" >
+      <Link href={`/${locale}/course/${toSnakeCase(title)}`} className="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 mt-auto scale-110" >
         {buttonText}
       </Link>
     </div>
@@ -42,7 +45,7 @@ export const LessonsList: FC<LessonsListProps> = ({ title, lessons }) => {
         {title}
       </h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 max-w-4xl mx-auto px-4 py-5">
+      <div className="flex flex-wrap lg:flex-nowrap px-4 py-5 max-w-[1400px] mx-auto">
         {lessons.map((lesson, index) => (
           <LessonListItem key={index} {...lesson} />
         ))}

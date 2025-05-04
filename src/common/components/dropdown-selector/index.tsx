@@ -1,30 +1,16 @@
 'use client'
 import React, { FC, useRef, useState } from 'react'
+import chevronDown from './chevron-down.svg'
+import Image from 'next/image';
 
 type AccordionItem = {
   title: string;
   content: string[];
 };
 
-const accordionData: AccordionItem[] = [
-  {
-    title: 'What will you learn in this course?',
-    content: [
-      'Introducing yourself and greeting others',
-      'Numbers, days, and months',
-      'Ordering food, asking for directions and help',
-      'Forming basic sentences in the present tense',
-      'Essential day-to-day vocabulary',
-    ],
-  },
-  { title: 'Who is this class for?', content: [] },
-  { title: 'What topics will be covered?', content: [] },
-  { title: 'Why choose this course?', content: [] },
-];
 
-
-export const DropDownSelector: FC = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+export const DropDownSelector: FC<{ items: AccordionItem[] }> = ({ items }) => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggleAccordion = (index: number) => {
@@ -32,15 +18,21 @@ export const DropDownSelector: FC = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-white rounded-md shadow">
-      {accordionData.map((item, index) => (
+    <div className=" bg-white rounded-md shadow border">
+      {items.map((item, index) => (
         <div key={index} className="border-b">
           <button
             onClick={() => toggleAccordion(index)}
             className="w-full text-left px-4 py-3 font-medium text-black hover:bg-blue-50 flex justify-between items-center"
           >
             {item.title}
-            <span>{activeIndex === index ? '▲' : '▼'}</span>
+            <Image
+              src={chevronDown}
+              width={19}
+              height={19}
+              alt='chevron'
+              className={activeIndex === index ? 'rotate-180 transition-transform' : 'rotate-0 transition-transform'}
+            />
           </button>
 
           <div
@@ -57,7 +49,7 @@ export const DropDownSelector: FC = () => {
             <div className="px-6 pb-4 pt-2 text-gray-700">
               <ul className="list-disc pl-5">
                 {item.content.map((line, i) => (
-                  <li key={i}>{line}</li>
+                  <li className='text-start border-b py-2' key={i}>{line}</li>
                 ))}
               </ul>
             </div>

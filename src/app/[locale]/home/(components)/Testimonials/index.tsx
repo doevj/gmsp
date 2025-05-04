@@ -1,25 +1,12 @@
-import { Slider } from '@/common/components';
-import Image from 'next/image';
 import React, { FC } from 'react';
-
-const reviews = [
-  {
-    name: 'Ivan Baroslov',
-    text: 'Increíble experiencia! Aprendí tanto en tan poco tiempo',
-    imageUrl: '/media/img/test1.png',
-  },
-  {
-    name: 'Jane Smith',
-    text: 'This is another testimonial text',
-    imageUrl: '/media/img/test2.jpg',
-  }
-];
-
+import Image from 'next/image';
+import { Slider } from '@/common/components';
+import { reviews } from '@/data/reviews';
 
 const TestimonialItem: FC<{ name: string; text: string; imageUrl: string }> = ({ name, text, imageUrl }) => {
   return (
     <div className='scale-90 flex flex-col sm:flex-row gap-2 items-center justify-center w-[90%]'>
-      <Image width={80} height={80} src={imageUrl} alt={name} className='rounded-full sm:mx-auto md:mx-0' />
+      <Image width={90} height={90} src={imageUrl} alt={name} className='max-h-[90px] max-w-[90px] min-h-[90px] min-w-[90px] object-cover rounded-full sm:mx-auto md:mx-0' />
       <h4 className='text-xl font-semibold text-teal-500'>{name}</h4>
       <p className='text-gray-600 text-2xl font-serif'> &quot;{text}&quot;</p>
     </div>

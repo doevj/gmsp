@@ -52,13 +52,20 @@ export const ChangeLangDropdown: FC = () => {
   }, []);
 
   return (
-    <div ref={ref} className="scale-[0.85] md:scale-90 flex flex-col gap-2 p-2 px-3 relative z-70 overflow-visible  bg-teal-800/70 rounded-lg -mr-4">
-      <button onClick={() => setIsOpen(v => !v)} className="relative flex gap-1 items-center opacity-55 hover:opacity-100 transition-all duration-200">
+    <div
+      ref={ref}
+      className="scale-[0.85] md:scale-90 flex flex-col gap-2 p-2 px-3 relative z-70 overflow-visible  bg-teal-800/70 rounded-lg -mr-4"
+      onMouseOver={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <button
+        className="relative flex gap-1 items-center opacity-55 hover:opacity-100 transition-all duration-200">
         <span className="z-10 text-white">
           {locale}
         </span>
         <Image width={15} height={10} src={languageItems[locale].image.src || ''} alt={`lang-${locale}`} className=" h-2" />
       </button>
+      <div className='absolute top-7 left-0 p-5' />
       <div className={`absolute top-12 left-0 gap-2 ${isOpen ? 'flex flex-col' : 'hidden'} rounded-lg p-2 px-3 bg-teal-800/70`}>
         {
           Object.values(languageItems).map(({ title, lang, image }) => lang !== locale && (

@@ -32,6 +32,8 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
     },
   });
 
+  console.log({ user })
+
   const accessToken = createAccessToken(user.id);
   const refreshToken = createRefreshToken(user.id);
 

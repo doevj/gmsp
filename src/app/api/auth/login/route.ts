@@ -34,4 +34,4 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
   }));
 
   return res.json({ accessToken });
-}
+} 

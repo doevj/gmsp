@@ -32,13 +32,13 @@ const AboutPage: React.FC = () => {
           <p className='md:max-w-[50vw] md:min-w-[300px] md:text-xl fontf-nunito overflow-visible'>{t('message')}</p>
         </div>
 
-        <div className='rounded-3xl overflow-hidden'>
+        <div className='rounded-3xl overflow-hidden shadow-lg shadow-grey-900'>
           <Image height={400} width={400} src={'/media/img/img-about.jpg'} alt='portrait' className='rounded-3xl' />
         </div>
       </div>
 
       <div className='flex flex-col gap-5 items-center mb-20'>
-        <h1 className='text-3xl text-white'>Our Methodology</h1>
+        <h1 className='text-3xl text-white'>{t('methodology')}</h1>
 
         <div className='flex flex-wrap gap-10 w-full items-center justify-center' >
           {methodologyItems.map((item, index) => (
@@ -60,14 +60,14 @@ const AboutPage: React.FC = () => {
       </div>
 
       <div className='w-full flex flex-wrap sm:gap-10 items-center justify-center mb-20 md:p-10'>
-        <Button className='py-4 px-6 sm:py-4 sm:px-6 bg-gray-100/30 text-white font-bold rounded-lg shadow-md hover:bg-teal-600 hover:text-white'>{'Lets connect!'}</Button>
-        <Button className='py-4 px-6 sm:py-4 sm:px-6 bg-gray-100/30 text-white font-bold rounded-lg shadow-md hover:bg-teal-600 hover:text-white'>{'Test your level'}</Button>
+        <Button className='py-4 px-6 sm:py-4 sm:px-6 bg-gray-100/30 text-white font-bold rounded-lg shadow-md hover:bg-teal-600 hover:text-white'>{t('Lets connect!')}</Button>
+        <Button className='py-4 px-6 sm:py-4 sm:px-6 bg-gray-100/30 text-white font-bold rounded-lg shadow-md hover:bg-teal-600 hover:text-white'>{t('Test your level')}</Button>
       </div>
 
       <div className=' w- flex flex-col items-center justify-center mt-4 bg-white py-10 px-8 text-4xl font-bold font-nunito no-underline mb-20'>
-        <h4 className='text-teal-600 mb-7'>Schedule your free trial class</h4>
+        <h4 className='text-teal-600 mb-7'>{t('Schedule your free trial class')}</h4>
         <Button className="mt-6 px-6 py-3 border text-teal-600 border-teal-600 rounded-lg text-lg font-medium hover:bg-teal-600 hover:text-white transition-all scale-[100%!important] sm:scale-[125%!important]">
-          {'Book now'}
+          {t('Book now')}
         </Button>
       </div>
     </div>

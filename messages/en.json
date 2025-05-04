@@ -3,7 +3,7 @@
     "error": "An error occurred, please try again",
     "success": "Success",
     "loading": "Loading",
-    "notFound": "Not found",
+    "notFound": "404 Not found",
     "notFoundMessage": "The page you are looking for does not exist",
     "submit": "Submit",
     "cancel": "Cancel",
@@ -46,7 +46,9 @@
     "send message": "Send message",
     "register": "Register",
     "login": "Login",
-    "logout": "Logout"
+    "logout": "Logout",
+    "password": "Password",
+    "confirmPassword": "Confirm Password"
   },
   "Header": {
     "Home": "Home",
@@ -56,7 +58,10 @@
   "Home": {
     "title": "Grama Spanish",
     "message": "Grama Spanish Language School",
-    "description": "Grama Spanish Language School is a language school that offers Spanish classes for all levels. We offer classes for beginners, intermediate, and advanced students. Our classes are designed to help you learn Spanish in a fun and interactive way."
+    "description": "Grama Spanish Language School is a language school that offers Spanish classes for all levels. We offer classes for beginners, intermediate, and advanced students. Our classes are designed to help you learn Spanish in a fun and interactive way.",
+    "The best way to learn": "The best way to learn",
+    "Start Learning": "Start Learning",
+    "Schedule your free trial class": "Schedule your free trial class"
   },
   "Index": {
     "title": "Welcome to the index page",
@@ -64,7 +69,12 @@
   },
   "About": {
     "title": "Your future Our passion",
-    "message": "Welcome! I’m Alejandra López, a linguist, teacher, and founder of Grama Spanish. This project was born from my passion for teaching Spanish to people from different places and cultures. At our school, we don’t follow a single methodology because we believe there isn’t just one way to learn. That’s why we adapt to each student’s needs, interests, and learning style, ensuring a dynamic, effective, and motivating experience. Whether you want to improve your Spanish for travel, work, or simply to enjoy the language, we are here to guide you with classes designed especially for you. Learning Spanish can be a unique and enriching experience! Are you ready to start with us?"
+    "message": "Welcome! I’m Alejandra López, a linguist, teacher, and founder of Grama Spanish. This project was born from my passion for teaching Spanish to people from different places and cultures. At our school, we don’t follow a single methodology because we believe there isn’t just one way to learn. That’s why we adapt to each student’s needs, interests, and learning style, ensuring a dynamic, effective, and motivating experience. Whether you want to improve your Spanish for travel, work, or simply to enjoy the language, we are here to guide you with classes designed especially for you. Learning Spanish can be a unique and enriching experience! Are you ready to start with us?",
+    "methodology": "Our Methodology",
+    "Lets connect!": "Let’s connect!",
+    "Test your level": "Test your level",
+    "Schedule your free trial class": "Schedule your free trial class",
+    "Book now": "Book now"
   },
   "Checkout": {
     "getClasses": "Get Classes",

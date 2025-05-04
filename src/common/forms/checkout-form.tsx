@@ -51,12 +51,9 @@ const submitCheckout = async (data: FormData) => {
     return
   }
 
-  const mailText = `attempt, Name: ${name}\n\n${individual} Individual Classes\n${pair} Pair Classes\n${group} Group Classes\n\nChosen class type: ${variant}\n\nTotal: ${individual * 25 + pair * 25 + group * 25} €\n\nEmail\n${email}`
-
-  console.log(mailText)
-
-  // Send email
-  const response = await fetch('/api/send-email', {
+  const mailText = `attempt, Name: ${name}\n\n${individual} Individual Classes\n${pair} Pair Classes\n${group} Group Classes\n\nChosen class type: ${variant}\n\nTotal: ${individual * 25 + pair * 17 + group * 14} €\n\nEmail\n${email}`
+  // Send email 
+  const response = await fetch("/api/send-email", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

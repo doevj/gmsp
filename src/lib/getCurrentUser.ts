@@ -14,4 +14,4 @@ export async function getCurrentUser() {
   } catch {
     return null;
   }
-}
+} 
