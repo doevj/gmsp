@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.register_container {
+  @apply hidden sm:flex ml-auto items-center relative overflow-visible;
+}
+
+.register_login_btn {
+  @apply scale-90 hover:opacity-80 transition absolute top-0 left-0 mt-10;
+}
+
+.menu-items_container {
+  @apply flex flex-row items-center;
+}
+
+.menu-items_item {
+  @apply bg-opacity-70 transition duration-300 sm:hover:scale-110 hover:bg-opacity-100 text-white
+}

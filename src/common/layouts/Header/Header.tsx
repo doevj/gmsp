@@ -1,40 +1,31 @@
-import { Logo } from '@/common/assets/Logo';
-import { ChangeLangDropdown } from '@/common/components';
-import { useLocale } from 'next-intl';
-import Link from 'next/link';
-import { FC } from 'react';
-import { ClassesBtn, MenuItems, RegisterZone } from './components';
-import { getCurrentUser } from '@/lib/getCurrentUser';
+import { FC } from "react";
+import Link from "next/link";
+import { useLocale } from "next-intl";
+import { Logo } from "@/common/assets/Logo";
+import { ChangeLangDropdown } from "@/common/components";
+import { ClassesBtn, MenuItems, RegisterZone } from "./components";
+import { getCurrentUser } from "@/lib/getCurrentUser";
+
+import "./header.styles.css"
 
 export const Header: FC = () => {
   const locale = useLocale();
 
   return (
-    <nav className={styles.nav}>
-      <Link href={`/${locale}/home`} className={styles.logo}>
+    <nav className="header_nav">
+      <Link href={`/${locale}/home`} className="header_logo">
         <Logo />
       </Link>
 
-      <MenuItems >
+      <MenuItems>
         {/* <ClassesBtn locale={locale} /> */}
       </MenuItems>
 
-      <RegisterZone />
+      {/* <RegisterZone /> */}
 
+      <div className="mr-auto" />
       <div className="ml-auto sm:hidden" />
       <ChangeLangDropdown />
-      <CUser />
     </nav>
   );
 };
-
-const styles = {
-  nav: "fixed top-0 w-full h-16 bg-teal-600/70 backdrop-blur-lg z-50 flex items-center md:gap-3 px-5 overflow-visible max-h-screen",
-  logo: "items-center ml-[-2rem] sm:ml-0 hover:cursor-pointer scale-[0.5] sm:scale-[100%]"
-}
-
-export const CUser = async () => {
-  // const usr = await getCurrentUser()
-  // console.log({ usr })
-  return <></>
-}

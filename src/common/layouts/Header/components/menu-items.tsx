@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 
+import './header.components.styles.css';
+
 const menuItems = [
   { name: 'Courses', href: '/courses', id: 'courses' },
   { name: 'About', href: '/about', id: 'about' },
@@ -26,10 +28,10 @@ export const MenuItems: FC<PropsWithChildren> = ({ children }) => {
   }, [pathname]);
 
   return (
-    <div className={'flex flex-row items-center'}>
+    <div className="menu-items_container">
       {menuItems.map((item, index) => (
         <Link key={index} href={`/${locale}${item.href}`} >
-          <Button variant={activeMenuItem === item.id ? 'active' : 'normal'} className="bg-opacity-70 transition duration-300 hover:scale-110 hover:bg-opacity-100 text-white">
+          <Button variant={activeMenuItem === item.id ? 'active' : 'normal'} className="menu-items_item">
             {item.name}
           </Button>
         </Link>

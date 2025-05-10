@@ -18,7 +18,7 @@ export const Button: FC<ButtonProps> = ({ variant = 'normal', className, childre
       className={
         cn(
           variantClasses[variant],
-          'font-semibold py-1 px-2 sm:py-2 sm:px-4 rounded scale-[75%] sm:scale-[100%]',
+          'font-semibold py-1 px-2 sm:py-2 sm:px-4 rounded-lg scale-[75%] sm:scale-[100%]',
           className
         )
       }

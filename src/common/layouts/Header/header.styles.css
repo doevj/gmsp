@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header_nav {
+  @apply fixed top-0 w-full h-16 bg-teal-600/70 backdrop-blur-lg z-50 flex items-center md:gap-3 px-5 overflow-visible max-h-screen;
+}
+
+.header_logo {
+  @apply items-center ml-[-2rem] sm:ml-0 hover:cursor-pointer scale-[0.5] sm:scale-[100%];
+}

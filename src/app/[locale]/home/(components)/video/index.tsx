@@ -12,8 +12,8 @@ export const Video: FC = () => {
 
   return (
     <>
-      <video autoPlay loop muted ref={videoRef} className='absolute top-0 left-0 w-full opacity-80 z-[-1] object-cover h-full bg-teal-600'>
-        <source src="/media/video.mp4" type="video/mp4" />
+      <video autoPlay loop muted ref={videoRef} className='absolute top-0 left-0 w-full opacity-80 z-[-1] object-cover h-full bg-teal-600/50'>
+        {/* <source src="/media/video.mp4" type="video/mp4" /> */}
       </video>
     </>
   );

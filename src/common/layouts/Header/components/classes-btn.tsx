@@ -10,7 +10,11 @@ export const ClassesBtn: FC<{ locale: string }> = async ({ locale }) => {
 
   return (
     <Link href={`/${locale}/checkout`} >
-      <Button variant={disabled ? 'normal' : 'trust'} className={`hidden md:flex bg-opacity-70 ${!disabled && 'hover:bg-opacity-100'} text-gray-600 text-nowrap ${disabled && 'opacity-25'}`} disabled={disabled}>
+      <Button
+        variant={disabled ? 'normal' : 'trust'}
+        className={`hidden md:flex bg-opacity-70 ${!disabled && 'hover:bg-opacity-100'} text-gray-600 text-nowrap ${disabled && 'opacity-25'}`}
+        disabled={disabled}
+      >
         Get classes
       </Button>
     </Link >
