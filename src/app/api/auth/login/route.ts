@@ -1,21 +1,23 @@
 import { createAccessToken, createRefreshToken } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
-import { NextApiRequest, NextApiResponse } from 'next';
-import { serialize } from 'cookie';
+import { cookies } from 'next/headers';
+import { NextRequest } from 'next/server';
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-  const { email, password } = req.body;
+export async function POST(req: NextRequest): Promise<Response> {
+  const { email, password } = await req.json();
 
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user || !(await bcrypt.compare(password, user.password))) {
-    return res.status(401).json({ message: 'Invalid credentials' });
+    return new Response(JSON.stringify({ message: 'Invalid credentials' }), {
+      status: 401,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   const accessToken = createAccessToken(user.id);
   const refreshToken = createRefreshToken(user.id);
 
-  // Store refresh token in DB
   await prisma.refreshToken.create({
     data: {
       token: refreshToken,
@@ -24,14 +26,16 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
     },
   });
 
-  // Set refresh token as httpOnly cookie
-  res.setHeader('Set-Cookie', serialize('refreshToken', refreshToken, {
+  (await cookies()).set('refreshToken', refreshToken, {
     httpOnly: true,
     path: '/',
     secure: process.env.NODE_ENV === 'production',
     maxAge: 60 * 60 * 24 * 2,
     sameSite: 'lax',
-  }));
+  });
 
-  return res.json({ accessToken });
-} 
+  return new Response(JSON.stringify({ accessToken }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
