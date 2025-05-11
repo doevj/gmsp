@@ -27,15 +27,18 @@ const AboutPage: React.FC = () => {
   const t = useTranslations('About');
 
   return (
-    <div className="relative w-full bg-teal-600/90">
-      <div className='w-[100vw] h-full flex flex-col md:flex-row items-center md:items-start gap-10 justify-center py-[5rem] px-5 md:px-40 mb-[10rem]'>
+    <div className="relative w-full bg-teal-500">
+      <div className='w-[100vw] h-full flex flex-col lg:flex-row items-center md:items-start gap-20 justify-center py-[5rem] px-5 md:px-40 mb-[10rem]'>
         <div className='flex flex-col overflow-visible'>
-          <h1 className='font-bold font-nunito text-white text-3xl md:text-4xl max-w-[300px] mb-7'>{t('title')}</h1>
-          <p className='md:max-w-[50vw] md:min-w-[300px] md:text-xl fontf-nunito overflow-visible'>{t('message')}</p>
+          <div className='flex flex-col gap-2 mb-7'>
+            <h1 className='font-bold text-white text-3xl md:text-4xl max-w-[300px] font-serif'>{t('title')}</h1>
+            <h1 className='font-bold text-white text-3xl md:text-4xl max-w-[300px] font-serif'>{t('subtitle')}</h1>
+          </div>
+          <p className='md:max-w-[500px] md:min-w-[300px] md:text-xl font-nunito overflow-visible'>{t('message')}</p>
         </div>
 
-        <div className='rounded-3xl overflow-hidden shadow-lg shadow-grey-900'>
-          <Image height={400} width={400} src={'/media/img/img-about.jpg'} alt='portrait' className='rounded-3xl' />
+        <div className='rounded-3xl overflow-hidden shadow-lg shadow-grey-900 sm:mt-auto'>
+          <Image height={350} width={350} src={'/media/img/img-about.jpg'} alt='portrait' className='rounded-3xl' />
         </div>
       </div>
 
@@ -62,8 +65,10 @@ const AboutPage: React.FC = () => {
       </div>
 
       <div className='w-full flex flex-wrap sm:gap-10 items-center justify-center mb-20 md:p-10'>
-        <Button className='py-4 px-6 sm:py-4 sm:px-6 bg-gray-100/30 text-white font-bold rounded-lg shadow-md hover:bg-teal-600 hover:text-white'>{t('Lets connect!')}</Button>
-        <Button className='py-4 px-6 sm:py-4 sm:px-6 bg-gray-100/30 text-white font-bold rounded-lg shadow-md hover:bg-teal-600 hover:text-white'>{t('Test your level')}</Button>
+        <Link href={`/${locale}/contacts`}>
+          <Button className='py-4 px-6 sm:py-4 sm:px-6 bg-gray-100/30 text-white font-bold rounded-lg shadow-md hover:bg-teal-600 hover:text-white'>{t('Lets connect!')}</Button>
+        </Link>
+        {/* <Button className='py-4 px-6 sm:py-4 sm:px-6 bg-gray-100/30 text-white font-bold rounded-lg shadow-md hover:bg-teal-600 hover:text-white'>{t('Test your level')}</Button> */}
       </div>
 
       <div className=' w- flex flex-col items-center justify-center mt-4 bg-white py-10 px-8 text-4xl font-bold font-nunito no-underline mb-20'>

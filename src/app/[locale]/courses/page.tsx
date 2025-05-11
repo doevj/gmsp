@@ -46,4 +46,4 @@ export default function Lessons() {
       <LessonsList lessons={lessons} title="Discover your perfect path to learning Spanish" />
     </div>
   );
-}
+} 

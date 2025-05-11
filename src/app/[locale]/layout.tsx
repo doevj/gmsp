@@ -5,6 +5,15 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Header, Footer, Social } from '@/common/layouts';
 import '../globals.css';
+
+import { Nunito } from 'next/font/google'
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  variable: '--font-nunito',
+})
+
+
 export default async function LocaleLayout({
   children,
   params
@@ -20,8 +29,8 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body >
+    <html lang={locale} className={nunito.variable}>
+      <body>
         <NextIntlClientProvider messages={messages}>
           <Header />
           <div className='mb-16' />

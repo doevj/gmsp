@@ -1,5 +1,8 @@
 'use client';
 import React, { FC, useEffect } from 'react';
+import Image from 'next/image';
+import imgsrc from './una-escribe.jpg';
+import './video.styles.css';
 
 export const Video: FC = () => {
   const videoRef = React.useRef<HTMLVideoElement>(null);
@@ -12,9 +15,11 @@ export const Video: FC = () => {
 
   return (
     <>
-      <video autoPlay loop muted ref={videoRef} className='absolute top-0 left-0 w-full opacity-80 z-[-1] object-cover h-full bg-teal-600/50'>
+      {/* autoPlay loop muted ref={videoRef}  */}
+      <div className='video_container'>
+        <Image src={imgsrc} alt='back_image' className='video_container__img' height={500} width={500} />
         {/* <source src="/media/video.mp4" type="video/mp4" /> */}
-      </video>
+      </div>
     </>
   );
-};
+}; 

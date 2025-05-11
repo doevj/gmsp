@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .header_nav {
-  @apply fixed top-0 w-full h-16 bg-teal-600/70 backdrop-blur-lg z-50 flex items-center md:gap-3 px-5 overflow-visible max-h-screen;
+  @apply fixed top-0 w-full h-16 bg-teal-700/80 backdrop-blur-lg z-50 flex items-center md:gap-3 px-5 overflow-visible max-h-screen;
 }
 
 .header_logo {

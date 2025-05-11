@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.video_container {
+  @apply absolute top-0 left-0 w-full opacity-80 z-[-1] object-cover h-full bg-teal-600/50;
+}
+
+.video_container__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(7px);
+}

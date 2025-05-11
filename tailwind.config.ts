@@ -13,6 +13,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        nunito: ['var(--font-nunito)', 'sans-serif'],
+      },
     },
   },
   plugins: [],
