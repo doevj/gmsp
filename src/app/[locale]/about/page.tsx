@@ -28,7 +28,7 @@ const AboutPage: React.FC = () => {
 
   return (
     <div className="relative w-full bg-teal-500">
-      <div className='w-[100vw] h-full flex flex-col lg:flex-row items-center md:items-start gap-20 justify-center py-[5rem] px-5 md:px-40 mb-[10rem]'>
+      <div className='w-[100vw] h-full flex flex-col lg:flex-row items-center md:items-start gap-20 justify-center py-[5rem] px-5 md:px-40 mb-[15rem]'>
         <div className='flex flex-col overflow-visible'>
           <div className='flex flex-col gap-2 mb-7'>
             <h1 className='font-bold text-white text-3xl md:text-4xl max-w-[300px] font-serif'>{t('title')}</h1>
@@ -43,7 +43,7 @@ const AboutPage: React.FC = () => {
       </div>
 
       <div className='flex flex-col gap-5 items-center mb-20'>
-        <h1 className='text-3xl text-white'>{t('methodology')}</h1>
+        <h1 className='text-3xl text-white font-nunito uppercase'>{t('methodology')}</h1>
 
         <div className='flex flex-wrap gap-10 w-full items-center justify-center' >
           {methodologyItems.map((item, index) => (
@@ -56,8 +56,8 @@ const AboutPage: React.FC = () => {
                 className="max-w-[100%] max-h-[200px] min-w-[100%] min-h-[200px] object-cover mx-auto rounded-t-2xl opacity-85 bg-white"
               />
               <div className="p-5">
-                <h2 className="text-lg mb-4 uppercase font-spectral font-extralight text-center text-white">{item.title}</h2>
-                <p className=" max-w-[290px] text-white">{item.description}</p>
+                <h2 className="text-lg mb-4 uppercase font-nunito text-center text-white">{item.title}</h2>
+                <p className=" max-w-[290px] font-nunito text-white">{item.description}</p>
               </div>
             </div>
           ))}

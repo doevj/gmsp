@@ -5,7 +5,7 @@ const lessons = [
     title: 'Spanish for Beginners',
     description: 'If you\'re taking your first steps in Spanish, this class is for you. You\'ll learn basic vocabulary, essential phrases, and fundamental grammar structures to communicate in everyday situations simply and effectively.',
     imageUrl: '/media/svg/img10.svg',
-    buttonText: 'Start Learning',
+    buttonText: 'More Info',
   },
   {
     title: 'Intermediate Spanish',
@@ -17,7 +17,7 @@ const lessons = [
     title: 'Advanced Spanish',
     description: 'Take your Spanish to the next level. We will refine your grammar, expand your vocabulary, and work on the accuracy and naturalness of your communication so you can speak like a native in any context.',
     imageUrl: '/media/svg/img12.svg',
-    buttonText: 'Start Learning',
+    buttonText: 'More Info',
   },
   {
     title: 'Spanish for Kids',
@@ -29,7 +29,7 @@ const lessons = [
     title: 'Business Spanish',
     description: 'Enhance your Spanish for professional settings. You\'ll learn specialized vocabulary, email writing, presentations, and effective communication in meetings, helping you succeed in the business world.',
     imageUrl: '/media/svg/img14.svg',
-    buttonText: 'Start Learning',
+    buttonText: 'More Info',
   },
   {
     title: 'Spanish for Travel',

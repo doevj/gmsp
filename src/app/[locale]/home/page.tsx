@@ -35,7 +35,7 @@ export default function Home() {
       <div className="mb-10" />
 
       <div className='relative'>
-        <LessonsList lessons={lessons} title="Choose your way" />
+        <LessonsList lessons={lessons} title="Choose your way" wide />
       </div>
 
       <Testimonials />

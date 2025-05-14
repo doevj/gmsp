@@ -3,6 +3,7 @@ import { DropDownSelector } from "@/common/components";
 import { getCourseData } from '@/data/courses';
 import { useLocale, useTranslations } from "next-intl";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{ id: string }>
@@ -79,6 +80,7 @@ const RedirectPage = () => {
 
 
 const SpanishClassCards: FC<{ title: string }> = ({ title }) => {
+  const locale = useLocale();
   const classes = [
     {
       title: `${title} Individual Class`,
@@ -109,9 +111,11 @@ const SpanishClassCards: FC<{ title: string }> = ({ title }) => {
           </h2>
           <p className="text-gray-600 mb-2">Duration: {cls.duration}</p>
           <p className="text-gray-600 mb-6">Price: {cls.price}</p>
-          <button className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg text-lg">
-            Book My Class
-          </button>
+          <Link href={`/${locale}/checkout`} >
+            <button className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg text-lg">
+              Book my Class
+            </button>
+          </Link>
         </div>
       ))}
     </div>

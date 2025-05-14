@@ -14,6 +14,7 @@ type Lesson = {
 type LessonsListProps = {
   title: string;
   lessons: Lesson[];
+  wide?: boolean;
 }
 
 const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }) => {
@@ -38,14 +39,14 @@ const LessonListItem: FC<Lesson> = ({ title, description, imageUrl, buttonText }
   );
 };
 
-export const LessonsList: FC<LessonsListProps> = ({ title, lessons }) => {
+export const LessonsList: FC<LessonsListProps> = ({ title, lessons, wide }) => {
   return (
     <div className="relative pb-10 z-10">
       <h1 className="text-center text-[2rem] md:text-[3.5rem] font-bold text-teal-600 mb-8 font-serif">
         {title}
       </h1>
 
-      <div className={`flex flex-wrap justify-start gap-x-3 gap-y-8 px-4 py-5 max-w-[1400px] mx-auto`}>
+      <div className={`flex flex-wrap justify-start  px-4 py-5 mx-auto ${wide ? 'max-w-[1400px]' : 'max-w-[1250px]'} gap-5`}>
         {lessons.map((lesson, index) => (
           <LessonListItem key={index} {...lesson} />
         ))}
