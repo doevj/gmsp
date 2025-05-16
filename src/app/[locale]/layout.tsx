@@ -13,6 +13,10 @@ const nunito = Nunito({
   variable: '--font-nunito',
 })
 
+export const metadata = {
+  title: "Grama Spanish",
+  description: "Grama Spanish Language School",
+};
 
 export default async function LocaleLayout({
   children,

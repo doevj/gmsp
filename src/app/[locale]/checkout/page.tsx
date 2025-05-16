@@ -5,6 +5,11 @@ type Props = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
+export const metadata = {
+  title: "Grama Spanish",
+  description: "Grama Spanish Language School",
+};
+
 export default async function CheckoutWrapper({ searchParams }: Props) {
   const params = await searchParams;
   const isBundle = Boolean(params.bundle || false);
