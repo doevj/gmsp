@@ -143,7 +143,8 @@ const SpanishBundleCards: FC = () => {
       <h2 className="text-2xl font-semibold text-gray-900">Go further for less</h2>
       <div className="flex justify-center items-center gap-8 flex-wrap p-10">
         {bundles.map((bundle, index) => (
-          <div
+          <Link
+            href={`/${useLocale()}/checkout?bundle=true`}
             key={index}
             className="bg-teal-700 bg-opacity-50 rounded-2xl p-8 w-72 text-white transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl cursor-pointer"
           >
@@ -151,7 +152,7 @@ const SpanishBundleCards: FC = () => {
               {bundle.title}
             </h3>
             <p className="text-white text-2xl font-bold">{bundle.price}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

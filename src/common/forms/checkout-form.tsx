@@ -3,35 +3,47 @@ import { loadStripe } from '@stripe/stripe-js'
 import { useTranslations } from 'next-intl'
 import { ClassItemInput, Input, SelectInput, SubmitButton } from '../inputs'
 import { redirect } from 'next/navigation';
+import { ClassItemCheckbox } from '../inputs/class-item-input';
 
-const variantOptions = [
-  { value: 'Spanish for Beginners', label: 'Spanish for Beginners' },
-  { value: 'Intermediate Spanish', label: 'Intermediate Spanish' },
-  { value: 'Advanced Spanish', label: 'Advanced Spanish' },
-  { value: 'Spanish for kids', label: 'Spanish for kids' },
-  { value: 'Business Spanish', label: 'Business Spanish' },
-  { value: 'Spanish for travel', label: 'Spanish for travel' },
-  { value: 'Grammar lessons', label: 'Grammar lessons' },
-  { value: 'Writing practice', label: 'Writing practice' },
-  { value: 'Spanish Conversation', label: 'Spanish Conversation' },
-  { value: 'Spanish Pronunciation', label: 'Spanish Pronunciation' },
-];
-
-export const CheckoutForm: FC = () => {
-  const t = useTranslations('general')
+export const CheckoutForm: FC<{
+  variantOptions: OptionT[]
+  classType: { title: string, name: string, price: number }[],
+  isBundle?: boolean
+}> = ({ variantOptions, classType, isBundle }) => {
+  const t = useTranslations('Checkout')
 
   return (
     <form action={submitCheckout} className='flex flex-col gap-4 p-4 bg-white rounded-lg shadow-md'>
-      <div className="mb-4" />
+      {/* <div className="mb-4" /> */}
       <Input name="name" label={t('name')} required />
       <Input name="email" label={t('email')} type="email" required />
-      <SelectInput name="variant" label={t('choose variant')} options={variantOptions.map(v => ({ value: v.value, label: t(v.label) }))} required />
+      <SelectInput
+        placeholder='Choose a class type'
+        name="variant"
+        label={t('choose variant')}
+        options={variantOptions.map(v => ({ value: v.value, label: t(v.label) }))}
+        defaultValue={{ value: 'Intermediate Spanish', label: '' }}
+        required
+      />
 
-      <ClassItemInput title={t('Individual Classes')} name="individual" price={25} />
-      <ClassItemInput title={t('Pair Classes')} name="pair" price={17} />
-      <ClassItemInput title={t('Group Classes')} name="group" price={14} />
+      {classType.map((item) => !isBundle ? (
+        <ClassItemInput
+          key={item.name}
+          title={t(item.title)}
+          name={item.name}
+          price={item.price}
+        />
+      ) : (
+        <ClassItemCheckbox
+          key={item.name}
+          title={t(item.title)}
+          name={item.name}
+          price={item.price}
+        />
+      )
+      )}
 
-      <SubmitButton />
+      <SubmitButton className='hover:scale-[101%] hover:bg-teal-800 transition' />
     </form>
   )
 }

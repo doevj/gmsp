@@ -24,14 +24,32 @@ export const Footer: FC = () => {
 
       <div className='sm:ml-auto'>
         <Image src="/media/svg/logo-white.svg" alt="Logo" height={210} width={210} className='md:ml-auto' />
-        <div className='flex flex-col sm:flex-row gap-5 items:start md:items-end'>
-          <label htmlFor='email' className='flex flex-col gap-1 text-white'>
-            Enter your email
-            <input name="email" className='p-2 md:p-4 border-none min-w-[250px] text-xs w-[200px] rounded-lg' type="email" placeholder="johndoe@gmail.com" aria-label="Email input" />
+        <form action={sendMessage} className='flex flex-col sm:flex-row gap-5 items:start md:items-end'>
+          <label htmlFor='email' className='flex flex-col gap-1 '>
+            <span className='text-white'>
+              Enter your email
+            </span>
+            <input required name="email" className='p-2 md:p-4 border-none min-w-[250px] text-xs w-[200px] rounded-lg' type="email" placeholder="johndoe@gmail.com" aria-label="Email input" />
           </label>
-          <Button className='text-white bg-teal-600 hover:scale-[101%] hover:bg-teal-800 transition'>Stay updated</Button>
-        </div>
+          <Button type='submit' className='text-white bg-teal-600 hover:scale-[101%] hover:bg-teal-800 transition'>Stay updated</Button>
+        </form>
       </div>
     </footer>
   );
-}; 
+};
+
+async function sendMessage(formData: FormData) {
+  'use server';
+  const email = formData.get('email');
+
+  // Send email 
+  const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/send-email`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, text: 'empty' }),
+  })
+
+  console.log('Form submitted:', { email });
+}

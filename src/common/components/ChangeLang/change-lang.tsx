@@ -54,7 +54,7 @@ export const ChangeLangDropdown: FC = () => {
   return (
     <div
       ref={ref}
-      className="scale-[0.85] md:scale-90 flex flex-col gap-2 p-2 px-3 relative z-70 overflow-visible  bg-teal-800/70 rounded-lg -mr-4"
+      className="scale-[0.71] md:scale-90 flex flex-col gap-2 p-2 px-3 relative z-70 overflow-visible  bg-teal-800/70 rounded-lg -mr-4"
       onMouseOver={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >

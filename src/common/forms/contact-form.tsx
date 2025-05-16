@@ -13,7 +13,7 @@ export const ContactForm: FC<{ title: string }> = ({ title }) => {
 
       <Textarea name="message" label={t('message')} maxLength={500} textWhite />
 
-      <SubmitButton label={t('send message')} className="mt-2" />
+      <SubmitButton label={t('send message')} className="mt-2 hover:scale-[101%] hover:bg-teal-700/80 transition" />
     </form>
   )
 }
@@ -23,6 +23,16 @@ async function sendMessage(formData: FormData) {
   const name = formData.get('name');
   const email = formData.get('email');
   const message = formData.get('message');
+
+  // Send email 
+  const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/send-email`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, text: message, name }),
+  })
+
 
   console.log('Form submitted:', { name, email, message });
 }
