@@ -2,7 +2,6 @@ import { Button } from '@/common/components';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 const methodologyItems = [
   {

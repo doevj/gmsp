@@ -36,7 +36,6 @@ export default function Contacts() {
         <ContactForm title='Get in touch' />
       </div>
 
-
     </div>
   );
 }

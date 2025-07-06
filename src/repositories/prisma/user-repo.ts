@@ -17,15 +17,16 @@ export class UserRepo {
   }
 
   public async createUser(data: { email: string; password: string; name: string }): Promise<User> {
-    return this.prismaClient.user.create({
-      data: { name: data.name, email: data.email, password: data.password },
-    }).catch((error) => {
-      if (error.code === "P2002") {
-        console.error("User already exists");
-        throw new Error("User already exists");
-      }
-      throw error;
-    });
+    return this.prismaClient
+      .user
+      .create({ data: { name: data.name, email: data.email, password: data.password } })
+      .catch((error) => {
+        if (error.code === "P2002") {
+          console.error("User already exists");
+          throw new Error("User already exists");
+        }
+        throw error;
+      });
   }
 
   public async removeUser(id: string): Promise<void> {

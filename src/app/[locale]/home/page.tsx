@@ -38,12 +38,17 @@ export default function Home() {
         <LessonsList lessons={lessons} title="Choose your way" wide />
       </div>
 
+      <div className="mb-10" />
+      <div className="mb-10" />
+
       <Testimonials />
 
       <div className=' mb-7 flex flex-col items-center justify-center mt-4 bg-teal-600/80 text-white py-10 px-8 text-4xl font-bold font-nunito no-underline'>
         <h4> {t('Schedule your free trial class')} </h4>
         <Link href={`/${locale}/contacts`}>
-          <Button className="mt-6 px-6 py-3 border scale-[1!important] border-white rounded-lg text-lg font-medium hover:bg-white hover:text-teal-500 transition-all">{t('Book now')}</Button>
+          <Button className="mt-6 px-6 py-3 border scale-[1!important] border-white rounded-lg text-lg font-medium hover:bg-white hover:text-teal-500 transition-all">
+            {t('Book now')}
+          </Button>
         </Link>
       </div>
     </>

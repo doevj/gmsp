@@ -23,4 +23,4 @@ export const lessons = [
     imageUrl: '/media/svg/trial-class.svg',
     buttonText: 'More info',
   },
-];
+]; 

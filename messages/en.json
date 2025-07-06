@@ -36,7 +36,12 @@
     "logout": "Logout",
     "password": "Password",
     "confirmPassword": "Confirm Password",
-    "checkout": "Checkout"
+    "checkout": "Checkout",
+    "duration": "Duration",
+    "price": "Price",
+    "bookMyClass": "Book my Class",
+    "enterEmail": "Enter your email",
+    "stayUpdated": "Stay updated"
   },
   "Header": {
     "Home": "Home",
@@ -102,5 +107,12 @@
     "Individual Classes Bundle": "Individual Classes Bundle",
     "Pair Classes Bundle": "Pair Classes Bundle",
     "Group Classes Bundle": "Group Classes Bundle"
+  },
+  "Course": {
+    "whatLearn": "What will you learn?",
+    "whosFor": "Who's is this class for?",
+    "whatTopics": "What topics will be covered?",
+    "whyChoose": "Why choose this course?",
+    "goFurther": "Go further for less"
   }
 }

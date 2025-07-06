@@ -2,6 +2,7 @@ import { FC } from "react";
 import { DropDownSelector } from "@/common/components";
 import { getCourseData } from '@/data/courses';
 import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from 'next-intl/server';
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
@@ -10,10 +11,13 @@ type Props = {
 }
 export default async function CoursePage({ params }: Props) {
   const { id } = await params;
+  const t = await getTranslations({ namespace: 'Course' });
+  const locale = await getLocale();
+
   if (redirectRoutes.includes(id)) {
     return <RedirectPage />
   }
-  const courseData = await getCourseData(id);
+  const courseData = await getCourseData(id, locale);
   if (!courseData) {
     return (
       <NotFoundView />
@@ -33,10 +37,10 @@ export default async function CoursePage({ params }: Props) {
         <div className="w-full">
           <DropDownSelector
             items={[
-              { content: courseData.whatLearn, title: 'What will you learn?' },
-              { content: courseData.whosFor, title: 'Who\'s is this class for?' },
-              { content: courseData.whatTopics, title: 'What topics will be covered?' },
-              { content: courseData.whyChoose, title: 'Why choose this course?' },
+              { content: courseData.whatLearn, title: t('whatLearn') },
+              { content: courseData.whosFor, title: t('whosFor') },
+              { content: courseData.whatTopics, title: t('whatTopics') },
+              { content: courseData.whyChoose, title: t('whyChoose') },
             ]}
           />
         </div>
@@ -78,8 +82,8 @@ const RedirectPage = () => {
   redirect(`/${locale}/courses`)
 }
 
-
 const SpanishClassCards: FC<{ title: string }> = ({ title }) => {
+  const t = useTranslations('general');
   const locale = useLocale();
   const classes = [
     {
@@ -109,11 +113,11 @@ const SpanishClassCards: FC<{ title: string }> = ({ title }) => {
           <h2 className="text-xl font-semibold mb-4 uppercase text-gray-800">
             {cls.title}
           </h2>
-          <p className="text-gray-600 mb-2">Duration: {cls.duration}</p>
-          <p className="text-gray-600 mb-6">Price: {cls.price}</p>
+          <p className="text-gray-600 mb-2">{t('duration')}: {cls.duration}</p>
+          <p className="text-gray-600 mb-6">{t('price')}: {cls.price}</p>
           <Link href={`/${locale}/checkout`} >
             <button className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg text-lg">
-              Book my Class
+              {t('bookMyClass')}
             </button>
           </Link>
         </div>
@@ -123,26 +127,14 @@ const SpanishClassCards: FC<{ title: string }> = ({ title }) => {
 };
 
 const SpanishBundleCards: FC = () => {
-  const bundles = [
-    {
-      title: "10 Individual Classes",
-      price: "€200",
-    },
-    {
-      title: "10 Pair Classes",
-      price: "€140",
-    },
-    {
-      title: "10 Group Classes",
-      price: "€170",
-    },
-  ];
+  const t = useTranslations('Course');
+  const locale = useLocale();
 
   return (
     <div className="bg-gray-100/50 py-12 px-4 text-center">
-      <h2 className="text-2xl font-semibold text-gray-900">Go further for less</h2>
+      <h2 className="text-2xl font-semibold text-gray-900">{t('goFurther')}</h2>
       <div className="flex justify-center items-center gap-8 flex-wrap p-10">
-        {bundles.map((bundle, index) => (
+        {(bundles[locale as 'en' | 'es' | 'ru'] || bundles['en'])?.map((bundle, index) => (
           <Link
             href={`/${useLocale()}/checkout?bundle=true`}
             key={index}
@@ -158,3 +150,48 @@ const SpanishBundleCards: FC = () => {
     </div>
   )
 }
+
+const bundles = {
+  en: [
+    {
+      title: "10 Individual Classes",
+      price: "€200",
+    },
+    {
+      title: "10 Pair Classes",
+      price: "€140",
+    },
+    {
+      title: "10 Group Classes",
+      price: "€170",
+    },
+  ],
+  es: [
+    {
+      title: "10 Clases Individuales",
+      price: "€200",
+    },
+    {
+      title: "10 Clases en Pareja",
+      price: "€140",
+    },
+    {
+      title: "10 Clases Grupales",
+      price: "€170",
+    },
+  ],
+  ru: [
+    {
+      title: "10 Индивидуальных",
+      price: "€200",
+    },
+    {
+      title: "10 Парных",
+      price: "€140",
+    },
+    {
+      title: "10 Групповых",
+      price: "€170",
+    },
+  ],
+};
